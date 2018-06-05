@@ -183,14 +183,13 @@ async def roll(number,mode,isTicket):
     print(mode)
     print(isTicket)
     gacha = fgoroll.Gacha()
-    gacha.changeMode(mode)
+    gacha.change_mode(mode)
     result = gacha.simulate(number,isTicket)
-    print(result[0].name)
-    msg=""
+    msg="Resultat : "
     for pulled in result:
         print(pulled.name)
         print(pulled.stars)
-        msg = msg + pulled.name + "   " + pulled.stars + "*\n"
+        msg = msg + str(pulled.name) + "   " + str(pulled.stars) + "*\n"
 
     await bot.say(msg)
 
