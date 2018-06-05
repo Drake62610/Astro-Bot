@@ -14,6 +14,7 @@ import recastai
 import nyaaRSS
 import tumblrpy
 import requests
+import fgoroll
 from discord.ext import commands
 from datetime import date
 from secretkey import *
@@ -175,6 +176,22 @@ async def currentevent():
 async def idchannel(ctx, arg):
     id = [channel for channel in bot.get_all_channels() if channel.name == arg][0]
     await bot.say("L\' id du channel " + arg + " est : " + id)
+
+@bot.command()
+async def roll(number,mode,isTicket):
+    print(number)
+    print(mode)
+    print(isTicket)
+    gacha = fgoroll.Gacha()
+    gacha.change_mode(mode)
+    result = gacha.simulate(number,isTicket)
+    msg="Resultat : "
+    for pulled in result:
+        print(pulled.name)
+        print(pulled.stars)
+        msg = msg + str(pulled.name) + "   " + str(pulled.stars) + "*\n"
+
+    await bot.say(msg)
 
 @bot.command()
 async def nextevent():
