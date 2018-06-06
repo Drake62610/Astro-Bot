@@ -1,12 +1,12 @@
 import json
 import math
 import random
-
+import os
 
 class Fgodb:
     class __Fgodb:
-        servantsDB = 'fgoscrap/servants.json'
-        essencesDB = 'fgoscrap/essences.json'
+        servantsDB = os.getcwd() + os.sep + 'fgoScrap'+ os.sep + 'servants.json'
+        essencesDB = 'fgoScrap'+ os.sep + 'essences.json'
         servantList = ''
         essenceList = ''
 
