@@ -5,7 +5,6 @@ import random
 servantsDB = 'servantsDB.csv'
 essencesDB = 'essencesDB.csv'
 
-
 def get_servant(servName):
     with open(servantsDB) as csvfile:
         reader = csv.reader(csvfile)
@@ -14,6 +13,7 @@ def get_servant(servName):
                 csvfile.close
                 return Servant(line[0], line[2], line[1])
     csvfile.close
+    print("NOT FOUND: " + servName)
     return Servant()
 
 
@@ -27,7 +27,6 @@ def get_essence(essName):
     csvfile.close
     print("NOT FOUND: "+essName)
     return Essence()
-
 
 class Servant:
     name, stars, sclass = '', '', ''
@@ -115,6 +114,16 @@ class Gacha:
                              "Ryudoji Temple", "Mana Gauge", "Elixir of Love", "Storch Ritter", "Hermitage",
                              "Motored Cuirassier", "Stuffed Lion", "Lugh's Halo"]
 
+    def check_mode(self,mode):
+        if mode != "Story":
+            mode_exist = False
+            for i in range(0,len(self.campaigns)):
+                if mode == self.campaigns[i].title:
+                    mode_exist = True
+            return mode_exist
+        else:
+            return True
+
     def init_campaigns(self):
         # Amai : This needs to be updated manually for now
         title = "Sanzang Coming To The West"
@@ -146,6 +155,7 @@ class Gacha:
         self.init_campaigns()
 
     def change_mode(self, mode):
+
         self.currFeatured3S = []
         self.currFeatured4S = []
         self.currFeatured5S = []
@@ -304,3 +314,15 @@ class Gacha:
                 result.append(self.pull_essence(5))
 
         return result
+
+gacha = Gacha()
+mode="Sanzang Coming To The West"
+if gacha.check_mode(mode):
+    gacha.change_mode(mode)
+    result = gacha.simulate(10,False)
+    msg="Resultat : "
+    for pulled in result:
+          msg = msg + str(pulled.name) + "   " + str(pulled.stars) + "*\n"
+    print(msg)
+else:
+    print("Mode inexistant")
