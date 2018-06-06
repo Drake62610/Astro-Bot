@@ -7,6 +7,7 @@
 #Library
 #-------------------
 import discord
+from keys import *
 import asyncio
 import aiohttp
 import os
@@ -17,7 +18,7 @@ import requests
 import fgoroll
 from discord.ext import commands
 from datetime import date
-from secretkey import *
+
 
 #Connect
 bot = commands.Bot(command_prefix='!', description='Astro Bot pour vous servir')
@@ -237,5 +238,6 @@ async def planninganime():
         await bot.send_file(bot.get_channel('178532977901305857'), f)
 
 bot.loop.create_task(check_nya())
+print(main_key)
 bot.run(main_key)
 print("done")
