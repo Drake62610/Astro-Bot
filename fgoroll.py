@@ -159,7 +159,7 @@ class Gacha:
         # Amai : This needs to be updated manually for now
         title = "Sanzang Coming To The West"
         featured_servants = ["Xuanzang Sanzang", "Li Shuwen", "David", "Lu Bu Fengxian"]
-        featured_essences = ["GO WEST!!", "True Samadhi Fire", "All Three Together"]
+        featured_essences = ["Go West!!", "True Samadhi Fire", "All Three Together"]
         self.campaigns.append(Campaign(title, featured_servants, featured_essences))
 
     def init_gacha(self):

@@ -17,7 +17,7 @@ import requests
 import fgoroll
 from discord.ext import commands
 from datetime import date
-from secretkey import *
+from keys import *
 
 #Connect
 bot = commands.Bot(command_prefix='!', description='Astro Bot pour vous servir')
@@ -183,7 +183,7 @@ async def roll(number, mode, is_ticket):
     fgodb = fgoroll.Fgodb()
     gacha = fgoroll.Gacha(fgodb)
 
-    msg=""
+
     images=""
 
     if gacha.check_mode(mode):
@@ -191,16 +191,19 @@ async def roll(number, mode, is_ticket):
         result = gacha.simulate(number, is_ticket)
 
         for pulled in result:
+            msg=""
+            images=""
             if isinstance(pulled, fgoroll.Servant):
                 msg = msg + str(pulled.name) + "   (" + str(pulled.sclass) + ")   " + str(pulled.stars) + "⭐\n"
                 images = images + " " + str(pulled.image_url)
             else:
-                msg = msg + str(pulled.name) + "   " + str(pulled.stars) + "*\n"
+                msg = msg + str(pulled.name) + "   " + str(pulled.stars) + "⭐\n"
                 images = images + " " + str(pulled.image_url)
+            await bot.say(msg+"\n"+images)
+            await asyncio.sleep(5)
     else:
         msg = "Mode inexistant"
-
-    await bot.say(msg+"\n"+images)
+        await bot.say(msg+"\n"+images)
 
 @bot.command()
 async def nextevent():
