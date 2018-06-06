@@ -1,56 +1,81 @@
-import csv
+import json
 import math
 import random
+import os
 
-servantsDB = 'servantsDB.csv'
-essencesDB = 'essencesDB.csv'
+class Fgodb:
+    class __Fgodb:
+        servantsDB = os.getcwd() + os.sep + 'fgoScrap'+ os.sep + 'servants.json'
+        essencesDB = 'fgoScrap'+ os.sep + 'essences.json'
+        servantList = ''
+        essenceList = ''
 
+        def __init__(self):
+            self.load_servants()
+            self.load_essences()
 
-def get_servant(servName):
-    with open(servantsDB) as csvfile:
-        reader = csv.reader(csvfile)
-        for line in reader:
-            if line[0] == servName:
-                csvfile.close
-                return Servant(line[0], line[2], line[1])
-    csvfile.close
-    return Servant()
+        def load_servants(self):
+            self.servantList = json.loads(open(self.servantsDB).read())
 
+        def load_essences(self):
+            self.essenceList = json.loads(open(self.essencesDB).read())
 
-def get_essence(essName):
-    with open(essencesDB) as csvfile:
-        reader = csv.reader(csvfile)
-        for line in reader:
-            if line[1] == essName:
-                csvfile.close
-                return Essence(line[1], line[0])
-    csvfile.close
-    print("NOT FOUND: "+essName)
-    return Essence()
+        def get_servant(self, serv_name):
+            for row in self.servantList:
+                if 'name' in serv_name:
+                    if serv_name['name'] in row['name'] and serv_name['sclass'] in row['sclass']:
+                        return Servant(row)
+                else:
+                    if serv_name in row['name']:
+                        return Servant(row)
+            print("NOT FOUND: " + serv_name)
+            return Servant()
+
+        def get_essence(self, ess_name):
+            for row in self.essenceList:
+                if ess_name in row['name']:
+                    return Essence(row)
+            print("NOT FOUND: " + ess_name)
+            return Essence()
+
+    instance = None
+
+    def __init__(self):
+        if not Fgodb.instance:
+            Fgodb.instance = Fgodb.__Fgodb()
+
+    def __getattr__(self, item):
+        return getattr(self.instance,item)
 
 
 class Servant:
-    name, stars, sclass = '', '', ''
+    name, stars, sclass, image_url = '', '', '', ''
 
-    def __init__(self, name="notfound", stars=0, sclass="unknown"):
-        self.name = name
-        self.stars = stars
-        self.sclass = sclass
+    def __init__(self, serv_dict=None):
+        if serv_dict is None:
+            serv_dict = {'name': "notfound", 'stars': 0, 'sclass': 'none', 'image_url': ''}
+        self.name = serv_dict['name']
+        self.stars = serv_dict['stars']
+        self.sclass = serv_dict['sclass']
+        self.image_url = serv_dict['image_url']
 
 
 class Essence:
-    name, stars = '', ''
+    name, stars, image_url = '', '', ''
 
-    def __init__(self, name="notfound", stars=0):
-        self.name = name
-        self.stars = stars
+    def __init__(self, serv_dict=None):
+        if serv_dict is None:
+            serv_dict = {'name': "notfound", 'stars': 0, 'image_url': ''}
+        self.name = serv_dict['name']
+        self.stars = serv_dict['stars']
+        self.image_url = serv_dict['image_url']
 
 
 class Campaign:
-    title=''
-    featured_servants,featured_essences=[],[]
-    base_ce_override_3,base_ce_override_4,base_ce_override_5=[],[],[]
-    base_servant_override_3,base_servant_override_4,base_servant_override_5=[],[],[]
+    title = ''
+    featured_servants, featured_essences = [], []
+    base_ce_override_3, base_ce_override_4, base_ce_override_5 = [], [], []
+    base_servant_override_3, base_servant_override_4, base_servant_override_5 = [], [], []
 
     def __init__(self, title, featured_servants, featured_essences, base_ce_override_3="", base_ce_override_4="",
                  base_ce_override_5="", base_servant_override_3="", base_servant_override_4="",
@@ -69,7 +94,7 @@ class Campaign:
 class Gacha:
     fiveStarBase, fiveStarStory, fourStarBase, fourStarStory, threeStarBase, threeStarStory = [], [], [], [], [], []
     fiveStarEss, fourStarEss, threeStarEss = [], [], []
-    campaigns=[]
+    campaigns = []
     currFiveStars, currFourStars, currThreeStars = [], [], []
     currFiveStarEss, currFourStarEss, currThreeStarEss = [], [], []
 
@@ -79,25 +104,30 @@ class Gacha:
     featured5sChance, featured4sChance, featured3sChance = [], [], []
     featured5eChance, featured4eChance, featured3eChance = [], [], []
 
+    fgodb = ''
+
     def raw_init(self):
         # Amai : This needs to be updated manually for now
+
+        # SERVANTS
         self.fiveStarBase = ["Altria Pendragon", "Altera", "Zhuge Liang (El-Melloi II)", "Vlad III", "Jeanne d'Arc",
-                             "Orion", "Francis Drake", "Tamamo no Mae", "Jack the Ripper", "Mordred", "Nightingale"]
+                             "Orion", "Francis Drake", "Tamamo-no-Mae", "Jack the Ripper", "Mordred", "Nightingale"]
         self.fiveStarStory = ["Nikola Tesla", "Queen Medb", "Cu Chulainn (Alter)"]
 
-        self.fourStarBase = ["Siegfried", "Chevalier d'Eon", "EMIYA", "Atalante", "Elisabeth Bathory",
-                             "Anne Bonny & Mary Read", "Marie Antoinette", "Saint Martha", "Stheno", "Carmilla",
+        self.fourStarBase = ["Siegfried", "Chevalier d'Eon", "Emiya", "Atalante", "Elisabeth Bathory",
+                             "Anne Bonny & Mary Read", "Marie Antoinette", "Martha", "Stheno", "Carmilla",
                              "Heracles", "Lancelot", "Tamamo Cat", "Nursery Rhyme", "Frankenstein"]
-        self.fourStarStory = ["Medea (Lily)", "Nero Claudius", "Altria Pendragon (Alter)",
-                              "Altria Pendragon (Lancer Alter)", "Li Shuwen", "Thomas Edison"]
+        self.fourStarStory = ["Medea (Lily)", "Nero Claudius", {'name':"Altria Pendragon (Alter)",'sclass':"Saber"},
+                              {'name':"Altria Pendragon (Alter)",'sclass':"Lancer"}, "Li Shuwen", "Thomas Edison"]
 
-        self.threeStarBase = ["Gaius Julius Caesar", "Gilles de Rais", "Robin Hood", "David", "Euryale", "Cu Chulainn",
+        self.threeStarBase = ["Gaius Julius Caesar", {'name':"Gilles de Rais",'sclass':"Saber"}, "Robin Hood", "David", "Euryale", {'name':"Cu Chulainn",'sclass':"Lancer"},
                               "Cu Chulainn (Prototype)", "Romulus", "Hektor", "Medusa", "Boudica", "Ushiwakamaru",
                               "Alexander", "Medea", "Mephistopheles", "Jing Ke", "Lu Bu Fengxian", "Darius III",
-                              "Kiyohime", "Diarmuid ua Duibhne", "Fergus mac Roich", "Paracelsus von Hohenheim",
+                              "Kiyohime", "Diarmuid Ua Duibhne", "Fergus mac Roich", "Paracelsus von Hohenheim",
                               "Charles Babbage", "Henry Jekyll & Hyde"]
-        self.threeStarStory = ["Cu Chulainn (Caster)", "Gilles de Rais (Caster)"]
+        self.threeStarStory = [{'name':"Gilles de Rais",'sclass':"Caster"}, {'name':"Cu Chulainn",'sclass':"Caster"}]
 
+        # ESSENCES
         self.fiveStarEss = ["Formal Craft", "Imaginary Around", "Limited/Zero Over", "Kaleidoscope", "Heaven's Feel",
                             "Prisma Cosmos", "The Black Grail", "Victor of the Moon", "Another Ending",
                             "A Fragment of 2030", "500-Year Obsession"]
@@ -111,15 +141,25 @@ class Gacha:
         # OLD ONES: var threeStarEss = ["Azoth Blade", "False Attendant's Writings", "The Azure Black Keys", "The Verdant Black Keys", "The Crimson Black Keys", "Rin's Pendant", "Spell Tome", "Dragon's Meridian", "Sorcery Ore", "Dragonkin", "Mooncell Automaton", "Runestones", "Anchors Aweigh", "Demonic Boar", "Clock Tower"]
         # TODO need to add these ce's first
 
-        self.threeStarEss = ["Mooncell Automaton", "Runestones", "Anchors Aweigh", "Demonic Boar", "Clock Tower",
+        self.threeStarEss = ["Mooncell Automaton", "Runestone", "Anchors Aweigh", "Demon Boar", "Clock Tower",
                              "Ryudoji Temple", "Mana Gauge", "Elixir of Love", "Storch Ritter", "Hermitage",
                              "Motored Cuirassier", "Stuffed Lion", "Lugh's Halo"]
+
+    def check_mode(self, mode):
+        if mode != "Story":
+            mode_exist = False
+            for i in range(0, len(self.campaigns)):
+                if mode == self.campaigns[i].title:
+                    mode_exist = True
+            return mode_exist
+        else:
+            return True
 
     def init_campaigns(self):
         # Amai : This needs to be updated manually for now
         title = "Sanzang Coming To The West"
         featured_servants = ["Xuanzang Sanzang", "Li Shuwen", "David", "Lu Bu Fengxian"]
-        featured_essences = ["GO WEST!!", "True Samadhi Fire", "All Three Together"]
+        featured_essences = ["Go West!!", "True Samadhi Fire", "All Three Together"]
         self.campaigns.append(Campaign(title, featured_servants, featured_essences))
 
     def init_gacha(self):
@@ -140,12 +180,14 @@ class Gacha:
         self.featured5sChance, self.featured4sChance, self.featured3sChance = 67, 67, 20
         self.featured5eChance, self.featured4eChance, self.featured3eChance = 45, 33, 20
 
-    def __init__(self):
+    def __init__(self,fgodb):
         self.raw_init()
         self.init_gacha()
         self.init_campaigns()
+        self.fgodb = fgodb
 
     def change_mode(self, mode):
+
         self.currFeatured3S = []
         self.currFeatured4S = []
         self.currFeatured5S = []
@@ -183,7 +225,7 @@ class Gacha:
 
                     for j in range(0, len(featured_servants)):
                         curr_servant = featured_servants[j]
-                        servant_obj = get_servant(curr_servant)
+                        servant_obj = self.fgodb.get_servant(curr_servant)
                         stars = servant_obj.stars
                         if stars == 3:
                             self.currFeatured3S.append(curr_servant)
@@ -194,7 +236,7 @@ class Gacha:
 
                     for j in range(0, len(featured_essences)):
                         curr_essence = featured_essences[j]
-                        ess_obj = get_essence(curr_essence)
+                        ess_obj = self.fgodb.get_essence(curr_essence)
                         stars = ess_obj.stars
                         if stars == 3:
                             self.currFeatured3E.append(curr_essence)
@@ -218,7 +260,7 @@ class Gacha:
             pull_featured = featured_chance < self.featured5eChance
             essence = self.pull_featured_obj(pull_featured, self.currFeatured5E, self.currFiveStarEss)
 
-        essence_obj = get_essence(essence)
+        essence_obj = self.fgodb.get_essence(essence)
         return essence_obj
 
     def pull_servant(self, stars):
@@ -237,8 +279,7 @@ class Gacha:
             pull_featured = featured_chance < self.featured5sChance
             servant = self.pull_featured_obj(pull_featured, self.currFeatured5S, self.currFiveStars)
 
-        servant_obj = get_servant(servant)
-        #print("SERVANT PULLED: "+servant+" - NAME: "+servant_obj.name+" STARS: "+servant_obj.stars)
+        servant_obj = self.fgodb.get_servant(servant)
         return servant_obj
 
     def pull_featured_obj(self, featured, curr_featured, currs):
@@ -304,3 +345,20 @@ class Gacha:
                 result.append(self.pull_essence(5))
 
         return result
+
+#fgodb = Fgodb()
+#gacha = Gacha(fgodb)
+
+#mode = "Story"
+#if gacha.check_mode(mode):
+#    gacha.change_mode(mode)
+#    result = gacha.simulate(1000, False)
+#    msg = "Resultat :\n"
+#    for pulled in result:
+#        if isinstance(pulled, Servant):
+#            msg = msg + str(pulled.name) + " " + str(pulled.sclass) + "   " + str(pulled.stars) + "*\n"
+#        else:
+#            msg = msg + str(pulled.name) + "   " + str(pulled.stars) + "*\n"
+#    print(msg)
+#else:
+#    print("Mode inexistant")

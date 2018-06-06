@@ -18,7 +18,7 @@ import requests
 import fgoroll
 from discord.ext import commands
 from datetime import date
-
+from keys import *
 
 #Connect
 bot = commands.Bot(command_prefix='!', description='Astro Bot pour vous servir')
@@ -179,20 +179,32 @@ async def idchannel(ctx, arg):
     await bot.say("L\' id du channel " + arg + " est : " + id)
 
 @bot.command()
-async def roll(number,mode,isTicket):
-    print(number)
-    print(mode)
-    print(isTicket)
-    gacha = fgoroll.Gacha()
-    gacha.change_mode(mode)
-    result = gacha.simulate(number,isTicket)
-    msg="Resultat : "
-    for pulled in result:
-        print(pulled.name)
-        print(pulled.stars)
-        msg = msg + str(pulled.name) + "   " + str(pulled.stars) + "*\n"
+async def roll(number, mode, is_ticket):
+    # TODO: Faire en sorte que fgodb et gacha soient initialisable au lancement du bot, et pas à chaque roll
+    fgodb = fgoroll.Fgodb()
+    gacha = fgoroll.Gacha(fgodb)
 
-    await bot.say(msg)
+
+    images=""
+
+    if gacha.check_mode(mode):
+        gacha.change_mode(mode)
+        result = gacha.simulate(number, is_ticket)
+
+        for pulled in result:
+            msg=""
+            images=""
+            if isinstance(pulled, fgoroll.Servant):
+                msg = msg + str(pulled.name) + "   (" + str(pulled.sclass) + ")   " + str(pulled.stars) + "⭐\n"
+                images = images + " " + str(pulled.image_url)
+            else:
+                msg = msg + str(pulled.name) + "   " + str(pulled.stars) + "⭐\n"
+                images = images + " " + str(pulled.image_url)
+            await bot.say(msg+"\n"+images)
+            await asyncio.sleep(5)
+    else:
+        msg = "Mode inexistant"
+        await bot.say(msg+"\n"+images)
 
 @bot.command()
 async def nextevent():
