@@ -225,7 +225,7 @@ class Gacha:
 
                     for j in range(0, len(featured_servants)):
                         curr_servant = featured_servants[j]
-                        servant_obj = fgodb.get_servant(curr_servant)
+                        servant_obj = self.fgodb.get_servant(curr_servant)
                         stars = servant_obj.stars
                         if stars == 3:
                             self.currFeatured3S.append(curr_servant)
@@ -236,7 +236,7 @@ class Gacha:
 
                     for j in range(0, len(featured_essences)):
                         curr_essence = featured_essences[j]
-                        ess_obj = fgodb.get_essence(curr_essence)
+                        ess_obj = self.fgodb.get_essence(curr_essence)
                         stars = ess_obj.stars
                         if stars == 3:
                             self.currFeatured3E.append(curr_essence)
@@ -260,7 +260,7 @@ class Gacha:
             pull_featured = featured_chance < self.featured5eChance
             essence = self.pull_featured_obj(pull_featured, self.currFeatured5E, self.currFiveStarEss)
 
-        essence_obj = fgodb.get_essence(essence)
+        essence_obj = self.fgodb.get_essence(essence)
         return essence_obj
 
     def pull_servant(self, stars):
@@ -279,8 +279,7 @@ class Gacha:
             pull_featured = featured_chance < self.featured5sChance
             servant = self.pull_featured_obj(pull_featured, self.currFeatured5S, self.currFiveStars)
 
-        servant_obj = fgodb.get_servant(servant)
-        # print("SERVANT PULLED: "+servant+" - NAME: "+servant_obj.name+" STARS: "+servant_obj.stars)
+        servant_obj = self.fgodb.get_servant(servant)
         return servant_obj
 
     def pull_featured_obj(self, featured, curr_featured, currs):
@@ -347,10 +346,9 @@ class Gacha:
 
         return result
 
-#TESTS
 #fgodb = Fgodb()
 #gacha = Gacha(fgodb)
-#
+
 #mode = "Story"
 #if gacha.check_mode(mode):
 #    gacha.change_mode(mode)
