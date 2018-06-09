@@ -1,6 +1,6 @@
 import pytumblr
 import requests
-from tumblr_keys import *    #this imports the content in our tumblr_keys.py file
+from keys import *
 
 # Authenticate via OAuth
 client = pytumblr.TumblrRestClient(

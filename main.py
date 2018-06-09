@@ -15,6 +15,7 @@ import nyaaRSS
 import tumblrpy
 import requests
 import fgoroll
+import function/tumblrpy
 from discord.ext import commands
 from datetime import date
 from keys import *
