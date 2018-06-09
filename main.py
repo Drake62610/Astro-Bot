@@ -16,7 +16,6 @@ import nyaaRSS
 import tumblrpy
 import requests
 import fgoroll
-import function/tumblrpy
 from discord.ext import commands
 from datetime import date
 from keys import *
@@ -179,8 +178,8 @@ async def idchannel(ctx, arg):
     id = [channel for channel in bot.get_all_channels() if channel.name == arg][0]
     await bot.say("L\' id du channel " + arg + " est : " + id)
 
-@bot.command()
-async def roll(number=1, mode="Story", is_ticket="False", is_pretty="False"):
+@bot.command(pass_context=True)
+async def roll(ctx,number=1, mode="Story", is_ticket="False", is_pretty="False"):
     # TODO: Faire en sorte que fgodb et gacha soient initialisable au lancement du bot, et pas à chaque roll
     fgodb = fgoroll.Fgodb()
     gacha = fgoroll.Gacha(fgodb)
@@ -190,9 +189,9 @@ async def roll(number=1, mode="Story", is_ticket="False", is_pretty="False"):
         result = gacha.simulate(number, is_ticket)
 
         if is_pretty:
-            show_pretty_roll(result)
+            await show_pretty_roll(result,gacha,ctx)
         else:
-            show_roll(result)
+            await show_roll(result)
     else:
         msg = "Mode inexistant"
         await bot.say(msg)
@@ -208,9 +207,9 @@ async def show_roll(result):
         await bot.say(msg + "\n" + images)
         await asyncio.sleep(5)
 
-async def show_pretty_roll(result):
-    msg_queue = fgoroll.gacha.pretty_print(result)
-    await bot.say("Roll en cours... (x"+len(result)+")")
+async def show_pretty_roll(result,gacha,ctx):
+    msg_queue = gacha.pretty_print(result)
+    await bot.say("Roll en cours... (x"+str(len(result))+")")
     for mes in msg_queue:
         if mes['type'] == "upload":
             await bot.upload(mes['content'])
@@ -219,7 +218,7 @@ async def show_pretty_roll(result):
             await bot.say(mes['content'])
             await asyncio.sleep(5)
         else:
-            await bot.purge(limit=1,check=is_bot)
+            await bot.purge_from(ctx.message.channel, limit=1)
     await bot.say("Roll terminé !")
 
 async def is_bot(m):
