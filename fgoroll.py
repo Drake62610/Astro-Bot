@@ -92,6 +92,7 @@ class Campaign:
 
 
 class Gacha:
+    imagesLocation = "card_images"
     fiveStarBase, fiveStarStory, fourStarBase, fourStarStory, threeStarBase, threeStarStory = [], [], [], [], [], []
     fiveStarEss, fourStarEss, threeStarEss = [], [], []
     campaigns = []
@@ -345,6 +346,36 @@ class Gacha:
                 result.append(self.pull_essence(5))
 
         return result
+
+    def pretty_print(self, result=None):
+        if result is None:
+            result = []
+        msg_queue = []
+        for pulled in result:
+            if int(pulled.stars) < 3:
+                color = "bronze"
+            elif int(pulled.stars) == 3:
+                color = "silver"
+            else:
+                color = "gold"
+
+            msg_queue.append({'type': "upload", 'content': self.imagesLocation + os.sep + color + "_back.png"})
+
+            if isinstance(pulled,Servant):
+                sclass = str(pulled.sclass).lower()
+                msg_queue.append({'type':"delete"})
+                msg_queue.append({'type':"upload",'content': self.imagesLocation + os.sep + color + "_" + sclass + ".png"})
+                msg_queue.append({'type': "delete"})
+                msg_queue.append({'type':"say",'content':str(pulled.image_url)})
+                msg_queue.append({'type':"say",
+                                  'content':str(pulled.name)+"    ("+str(pulled.sclass)+")   "+str(pulled.stars)+" ⭐"})
+
+            else:
+                msg_queue.append({'type': "delete"})
+                msg_queue.append({'type': "say", 'content': str(pulled.image_url)})
+                msg_queue.append({'type': "say",'content': str(pulled.name) + "    " + str(pulled.stars) + " ⭐"})
+
+        return msg_queue
 
 #fgodb = Fgodb()
 #gacha = Gacha(fgodb)
