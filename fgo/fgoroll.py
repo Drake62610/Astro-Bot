@@ -94,7 +94,7 @@ class Campaign:
 
 
 class Gacha:
-    imagesLocation = "card_images"
+    imagesLocation = "fgo"+ os.sep + "card_images"
     fiveStarBase, fiveStarStory, fourStarBase, fourStarStory, threeStarBase, threeStarStory = [], [], [], [], [], []
     fiveStarEss, fourStarEss, threeStarEss = [], [], []
     campaigns = []
