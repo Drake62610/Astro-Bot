@@ -17,7 +17,7 @@ class FgoCommands():
             gacha.change_mode(mode)
             result = gacha.simulate(number, is_ticket)
 
-            if is_pretty:
+            if is_pretty == "True":
                 await show_pretty_roll(result, gacha, ctx)
             else:
                 await show_roll(result)
@@ -37,21 +37,18 @@ class FgoCommands():
             await self.bot.say(msg + "\n" + images)
             await asyncio.sleep(5)
 
-
     async def show_pretty_roll(self,result, gacha, ctx):
         msg_queue = gacha.pretty_print(result)
         await self.bot.say("Roll en cours... (x" + str(len(result)) + ")")
         for mes in msg_queue:
             if mes['type'] == "upload":
                 await self.bot.upload(mes['content'])
-                await asyncio.sleep(5)
             elif mes['type'] == "say":
                 await self.bot.say(mes['content'])
-                await asyncio.sleep(5)
             else:
-                await self.bot.purge_from(ctx.message.channel, limit=1)
+                await asyncio.sleep(5)
+                await self.bot.purge_from(ctx.message.channel, limit=1, check=is_bot)
         await self.bot.say("Roll terminé !")
-
 
     async def is_bot(self,m):
         return m.author == self.bot.user
