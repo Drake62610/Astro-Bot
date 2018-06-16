@@ -12,7 +12,6 @@ client = pytumblr.TumblrRestClient(
 
 def run():
     feed = client.posts('good-smile-company', limit=1)
-
     #print(feed['posts'])
     announce = []
 

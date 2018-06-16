@@ -7,7 +7,8 @@ import os
 class Fgodb:
     class __Fgodb:
         servantsDB = os.getcwd() + os.sep + 'fgo' + os.sep + 'fgoScrap' + os.sep + 'servants.json'
-        essencesDB = 'fgo' + os.sep + 'fgoScrap' + os.sep + 'essences.json'
+        essencesDB = os.getcwd() + os.sep + 'fgo' + os.sep + 'fgoScrap' + os.sep + 'essences.json'
+
         servantList = ''
         essenceList = ''
 

@@ -6,7 +6,7 @@ import sys
 feed_name = 'Nya'
 url = 'https://nyaa.si/?page=rss'
 
-db = 'feeds.db'
+db = 'nyaa/feeds.db'
 limit = 12 * 3600 * 1000
 
 search = [['Tsubasa','VOSTFR']]
