@@ -13,7 +13,7 @@ async def roll(ctx, number=1, mode="Story", is_ticket="False", is_pretty="False"
         gacha.change_mode(mode)
         result = gacha.simulate(number, is_ticket)
 
-        if is_pretty:
+        if is_pretty == "True":
             await show_pretty_roll(result, gacha, ctx)
         else:
             await show_roll(result)
@@ -40,12 +40,11 @@ async def show_pretty_roll(result, gacha, ctx):
     for mes in msg_queue:
         if mes['type'] == "upload":
             await bot.upload(mes['content'])
-            await asyncio.sleep(5)
         elif mes['type'] == "say":
             await bot.say(mes['content'])
-            await asyncio.sleep(5)
         else:
-            await bot.purge_from(ctx.message.channel, limit=1)
+            await asyncio.sleep(5)
+            await bot.purge_from(ctx.message.channel, limit=1, check="is_bot")
     await bot.say("Roll terminé !")
 
 
