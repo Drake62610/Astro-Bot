@@ -1,12 +1,13 @@
 import asyncio
 from main import bot
 from fgo import fgoroll
+from discord.ext import commands
 
 class FgoCommands():
     def __init__(self, bot):
         self.bot = bot
 
-    @bot.command(pass_context=True)
+    @commands.command(pass_context=True)
     async def roll(self,ctx, number=1, mode="Story", is_ticket="False", is_pretty="False"):
         # TODO: Faire en sorte que fgodb et gacha soient initialisable au lancement du bot, et pas à chaque roll
         fgodb = fgoroll.Fgodb()
