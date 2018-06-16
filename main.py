@@ -10,13 +10,13 @@ import discord
 from discord.ext import commands
 from keys import *
 
-startup_extensions = ['nendo.NendoCommands','fgo.FgoCommands']
+startup_extensions = ['events.Events','nendo.NendoCommands','fgo.FgoCommands','misc.MiscCommands']
 
 # Connect
 bot = commands.Bot(command_prefix='!', description='Astro Bot pour vous servir')
 bot.remove_command("help")
 
-@bot.event
+@bot.command()
 async def on_ready():
     print('Logged in as')
     await bot.change_presence(game=discord.Game(name='Waifu Fight - Tentacle School Life Edition'))
@@ -62,4 +62,3 @@ if __name__ == "__main__":
     from nyaa import nyaaCommands
     bot.loop.create_task(nyaaCommands.check_nya(bot))
     bot.run(main_key)
-    print("done")
