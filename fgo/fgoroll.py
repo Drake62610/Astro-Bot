@@ -3,10 +3,12 @@ import math
 import random
 import os
 
+
 class Fgodb:
     class __Fgodb:
-        servantsDB = os.getcwd() + os.sep + 'fgoScrap'+ os.sep + 'servants.json'
-        essencesDB = 'fgoScrap'+ os.sep + 'essences.json'
+        servantsDB = os.getcwd() + os.sep + 'fgo' + os.sep + 'fgoScrap' + os.sep + 'servants.json'
+        essencesDB = os.getcwd() + os.sep + 'fgo' + os.sep + 'fgoScrap' + os.sep + 'essences.json'
+
         servantList = ''
         essenceList = ''
 
@@ -45,7 +47,7 @@ class Fgodb:
             Fgodb.instance = Fgodb.__Fgodb()
 
     def __getattr__(self, item):
-        return getattr(self.instance,item)
+        return getattr(self.instance, item)
 
 
 class Servant:
@@ -92,6 +94,7 @@ class Campaign:
 
 
 class Gacha:
+    imagesLocation = "fgo"+ os.sep + "card_images"
     fiveStarBase, fiveStarStory, fourStarBase, fourStarStory, threeStarBase, threeStarStory = [], [], [], [], [], []
     fiveStarEss, fourStarEss, threeStarEss = [], [], []
     campaigns = []
@@ -117,15 +120,17 @@ class Gacha:
         self.fourStarBase = ["Siegfried", "Chevalier d'Eon", "Emiya", "Atalante", "Elisabeth Bathory",
                              "Anne Bonny & Mary Read", "Marie Antoinette", "Martha", "Stheno", "Carmilla",
                              "Heracles", "Lancelot", "Tamamo Cat", "Nursery Rhyme", "Frankenstein"]
-        self.fourStarStory = ["Medea (Lily)", "Nero Claudius", {'name':"Altria Pendragon (Alter)",'sclass':"Saber"},
-                              {'name':"Altria Pendragon (Alter)",'sclass':"Lancer"}, "Li Shuwen", "Thomas Edison"]
+        self.fourStarStory = ["Medea (Lily)", "Nero Claudius", {'name': "Altria Pendragon (Alter)", 'sclass': "Saber"},
+                              {'name': "Altria Pendragon (Alter)", 'sclass': "Lancer"}, "Li Shuwen", "Thomas Edison"]
 
-        self.threeStarBase = ["Gaius Julius Caesar", {'name':"Gilles de Rais",'sclass':"Saber"}, "Robin Hood", "David", "Euryale", {'name':"Cu Chulainn",'sclass':"Lancer"},
+        self.threeStarBase = ["Gaius Julius Caesar", {'name': "Gilles de Rais", 'sclass': "Saber"}, "Robin Hood",
+                              "David", "Euryale", {'name': "Cu Chulainn", 'sclass': "Lancer"},
                               "Cu Chulainn (Prototype)", "Romulus", "Hektor", "Medusa", "Boudica", "Ushiwakamaru",
                               "Alexander", "Medea", "Mephistopheles", "Jing Ke", "Lu Bu Fengxian", "Darius III",
                               "Kiyohime", "Diarmuid Ua Duibhne", "Fergus mac Roich", "Paracelsus von Hohenheim",
                               "Charles Babbage", "Henry Jekyll & Hyde"]
-        self.threeStarStory = [{'name':"Gilles de Rais",'sclass':"Caster"}, {'name':"Cu Chulainn",'sclass':"Caster"}]
+        self.threeStarStory = [{'name': "Gilles de Rais", 'sclass': "Caster"},
+                               {'name': "Cu Chulainn", 'sclass': "Caster"}]
 
         # ESSENCES
         self.fiveStarEss = ["Formal Craft", "Imaginary Around", "Limited/Zero Over", "Kaleidoscope", "Heaven's Feel",
@@ -180,7 +185,7 @@ class Gacha:
         self.featured5sChance, self.featured4sChance, self.featured3sChance = 67, 67, 20
         self.featured5eChance, self.featured4eChance, self.featured3eChance = 45, 33, 20
 
-    def __init__(self,fgodb):
+    def __init__(self, fgodb):
         self.raw_init()
         self.init_gacha()
         self.init_campaigns()
@@ -346,11 +351,43 @@ class Gacha:
 
         return result
 
-#fgodb = Fgodb()
-#gacha = Gacha(fgodb)
+    def pretty_print(self, result=None):
+        if result is None:
+            result = []
+        msg_queue = []
+        for pulled in result:
+            if int(pulled.stars) < 3:
+                color = "bronze"
+            elif int(pulled.stars) == 3:
+                color = "silver"
+            else:
+                color = "gold"
 
-#mode = "Story"
-#if gacha.check_mode(mode):
+            msg_queue.append({'type': "upload", 'content': self.imagesLocation + os.sep + color + "_back.png"})
+
+            if isinstance(pulled, Servant):
+                sclass = str(pulled.sclass).lower()
+                msg_queue.append({'type': "delete"})
+                msg_queue.append(
+                    {'type': "upload", 'content': self.imagesLocation + os.sep + color + "_" + sclass + ".png"})
+                msg_queue.append({'type': "delete"})
+                msg_queue.append({'type': "say", 'content': str(pulled.image_url)})
+                msg_queue.append({'type': "say",
+                                  'content': str(pulled.name) + "    (" + str(pulled.sclass) + ")   " + str(
+                                      pulled.stars) + " ⭐"})
+
+            else:
+                msg_queue.append({'type': "delete"})
+                msg_queue.append({'type': "say", 'content': str(pulled.image_url)})
+                msg_queue.append({'type': "say", 'content': str(pulled.name) + "    " + str(pulled.stars) + " ⭐"})
+
+        return msg_queue
+
+# fgodb = Fgodb()
+# gacha = Gacha(fgodb)
+
+# mode = "Story"
+# if gacha.check_mode(mode):
 #    gacha.change_mode(mode)
 #    result = gacha.simulate(1000, False)
 #    msg = "Resultat :\n"
@@ -360,5 +397,5 @@ class Gacha:
 #        else:
 #            msg = msg + str(pulled.name) + "   " + str(pulled.stars) + "*\n"
 #    print(msg)
-#else:
+# else:
 #    print("Mode inexistant")

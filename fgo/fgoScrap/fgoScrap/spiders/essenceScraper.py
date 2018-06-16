@@ -1,6 +1,7 @@
 import scrapy
 
-from fgoScrap.items import EssenceItem
+from fgo.fgoScrap import EssenceItem
+
 
 #scrapy crawl essencelist -o [nom-de-loutput].json
 class EssenceScraper(scrapy.Spider):
