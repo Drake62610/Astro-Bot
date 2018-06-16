@@ -1,5 +1,4 @@
 import asyncio
-from main import bot
 import recastai
 import discord
 
@@ -15,7 +14,6 @@ class Events:
         print(self.bot.user.name)
 
     async def on_message(self,message):
-        await self.bot.process_commands(message)
 
         # RECAST
         if (str(message.channel) == "bot"):

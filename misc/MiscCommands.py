@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+import random
 
 class MiscCommands():
     def __init__(self, bot):
@@ -34,8 +35,26 @@ class MiscCommands():
     # AUTRES
     @commands.command()
     async def planninganime(self):
-        with open('planning.png', 'rb') as f:
+        with open('misc/planning.png', 'rb') as f:
             await self.bot.send_file(self.bot.get_channel('178532977901305857'), f)
+
+    @commands.command()
+    async def addTheme(self, word):
+        word = word.split(',')
+        print(word)
+        with open('misc/theme.db', 'a') as f:
+            for i in word:
+                f.write(i + '\n')
+        await self.bot.say('Fichier mis a jour')
+
+    @commands.command()
+    async def theme(self):
+        tmp = []
+        with open('misc/theme.db', 'r') as f:
+            for line in f:
+                tmp.append(line)
+        await self.bot.say('Le theme sera : ' + random.choice(tmp))
+
 
 def setup(bot):
     bot.add_cog(MiscCommands(bot))

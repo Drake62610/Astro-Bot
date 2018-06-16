@@ -16,12 +16,6 @@ startup_extensions = ['events.Events','nendo.NendoCommands','fgo.FgoCommands','m
 bot = commands.Bot(command_prefix='!', description='Astro Bot pour vous servir')
 bot.remove_command("help")
 
-@bot.command()
-async def on_ready():
-    print('Logged in as')
-    await bot.change_presence(game=discord.Game(name='Waifu Fight - Tentacle School Life Edition'))
-    print(bot.user.name)
-
 #Main Commands
 @bot.command()
 async def load(extension_name : str):
@@ -39,16 +33,6 @@ async def unload(extension_name : str):
     bot.unload_extension(extension_name)
     await bot.say("{} unloaded.".format(extension_name))
 
-@bot.command()
-async def add(left : int, right : int):
-    """Adds two numbers together."""
-    await bot.say(left + right)
-
-@bot.command()
-async def repeat(times : int, content='repeating...'):
-    """Repeats a message multiple times."""
-    for i in range(times):
-        await bot.say(content)
 
 if __name__ == "__main__":
     for extension in startup_extensions:
