@@ -30,16 +30,19 @@ class ScpCommands():
         Nerdpd = str(Nerdlist[randnerd])
         if params == "D-Boi":
             await self.bot.say("Ton défi : **" + Dboipd + "**")
-        if params == "SCP":
+        elif params == "SCP":
             await self.bot.say("Ton défi : **" + SCPpd + "**")
-        if params == "NTF":
+        elif params == "NTF":
             await self.bot.say("Ton défi : **" + NTFpd + "**")
-        if params == "Chaos":
+        elif params == "Chaos":
             await self.bot.say("Ton défi : **" + Chaospd + "**")
-        if params == "Nerd":
+        elif params == "Nerd":
             await self.bot.say("Ton défi : **" + Nerdpd + "**")
         else:
-            await self.bot.say("```css"+"\n"+"[Roulette SCP]"+"\n"+"!scp <role>" + "\n" + "\n" + "Avec <Role> = D-Boi, SCP, NTF, Chaos ou Nerd" + "\n" + "Envoie un defi aleatoire selon le role sur SCP Secret Laboratory" + "```")
+            await self.bot.say("```css"+"\n"+
+            "[Roulette SCP]"+"\n"+"!scp <role>" + "\n" + "\n" +
+            "Avec <Role> = D-Boi, SCP, NTF, Chaos ou Nerd" + "\n" +
+            "Envoie un defi aleatoire selon le role sur SCP Secret Laboratory" + "```")
 
 
 def setup(bot):
