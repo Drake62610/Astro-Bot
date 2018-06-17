@@ -10,7 +10,12 @@ import discord
 from discord.ext import commands
 from keys import *
 
-startup_extensions = ['events.Events','nendo.NendoCommands','fgo.FgoCommands','misc.MiscCommands']
+startup_extensions = ['events.Events',
+                      'nendo.NendoCommands',
+                      'fgo.FgoCommands',
+                      'misc.MiscCommands',
+                      'anilist.AnimeCommands',
+                      'SCP807.ScpCommands']
 
 # Connect
 bot = commands.Bot(command_prefix='!', description='Astro Bot pour vous servir')
