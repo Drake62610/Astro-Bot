@@ -25,3 +25,4 @@ def lancer(nb_de,nb_face):
 
 
 print(lancer(nb_de,nb_face))
+
