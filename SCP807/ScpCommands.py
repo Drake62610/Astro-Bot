@@ -7,7 +7,7 @@ class ScpCommands():
         self.bot = bot
 
     @commands.command()
-    async def scp(self,params):
+    async def scp(self,params='help'):
         #DBOI (9)
         DBoilist = ["Voler toutes les cartes", "Parler avec un accent québécois ou allemand ou américain style rambo", "Ne ramasser aucune carte", "Ne jamais courir", "Ne pas communiquer", "Jouer sans aucun son", "Ne parler qu'en disant D-Boi jusqu'a la mort", "Trouver le flingue avant d'upgrade les cartes", "Se faire capturer par des NTF et les faire chier le plus longtemps possible"]
         randd = int(random.randint(0, 8))
@@ -28,22 +28,21 @@ class ScpCommands():
         Nerdlist = ["Marcher en crabe", "Parler avec un accent québécois ou allemand ou américain style rambo", "Ne jamais courir", "Jouer sans aucun son", "Ne faire que rabaisser les classes D", "Ne parler qu'en disant Yee jusqu'a la mort"]
         randnerd = int(random.randint(0, 5))
         Nerdpd = str(Nerdlist[randnerd])
-       if (params[1] == "D-Boi" or params[1] == "D-boi" or params[1] == "DBoi" or params[1] == "Dboi" or params[1] == "ClasseD" or params[1] == "D" or params[1] == "d" or params[1] == "Déchet"):
-            yield from client.send_message(message.channel, "Ton défi : **" + Dboipd + "**")
-        if (params[1] == "SCP" or params[1] == "scp"):
-            yield from client.send_message(message.channel, "Ton défi : **" + SCPpd + "**")
-        if (params[1] == "NTF" or params[1] == "MTF" or params[1] == "ntf" or params[1] == "mtf"):
-            yield from client.send_message(message.channel, "Ton défi : **" + NTFpd + "**")
-        if (params[1] == "Chaos" or params[1] == "CI"):
-            yield from client.send_message(message.channel, "Ton défi : **" + Chaospd + "**")
-        if (params[1] == "Nerd" or params[1] == "Scientist" or params[1] == "scientist" or params[1] == "Scientifique"):
-            yield from client.send_message(message.channel, "Ton défi : **" + Nerdpd + "**")
+        if (params == "D-Boi" or params == "D-boi" or params == "DBoi" or params == "Dboi" or params == "ClasseD" or params == "D" or params == "d" or params == "Déchet"):
+            await self.bot.say("Ton défi : **" + Dboipd + "**")
+        elif (params == "SCP" or params == "scp"):
+            await self.bot.say("Ton défi : **" + SCPpd + "**")
+        elif (params == "NTF" or params == "MTF" or params == "ntf" or params == "mtf"):
+            await self.bot.say("Ton défi : **" + NTFpd + "**")
+        elif (params == "Chaos" or params == "CI"):
+            await self.bot.say("Ton défi : **" + Chaospd + "**")
+        elif (params == "Nerd" or params == "Scientist" or params == "scientist" or params == "Scientifique"):
+            await self.bot.say("Ton défi : **" + Nerdpd + "**")
         else:
             await self.bot.say("```css"+"\n"+
             "[Roulette SCP]"+"\n"+"!scp <role>" + "\n" + "\n" +
             "Avec <Role> = D-Boi, SCP, NTF, Chaos ou Nerd" + "\n" +
             "Envoie un defi aleatoire selon le role sur SCP Secret Laboratory" + "```")
-
 
 def setup(bot):
     bot.add_cog(ScpCommands(bot))
