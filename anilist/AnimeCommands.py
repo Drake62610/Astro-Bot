@@ -24,13 +24,15 @@ class AnimeCommands():
         tmp += '__**' + str(title) + '**__\n\n'
         print(tmp)
         ratingText =  soup.find("div", {"id": "ratingbox"})
-        ratingText = ratingText.find_all('span')
-        for i in ratingText:
-            i = str(i)
-            if 'vote' in i:
-                i = i.split('<span>')[1][1::]
-                tmp += i + '\n'
-        print(tmp)
+        if ratingText is None:
+            tmp += 'No evalutation here'
+        else:
+            ratingText = ratingText.find_all('span')
+            for i in ratingText:
+                i = str(i)
+                if 'vote' in i:
+                    i = i.split('<span>')[1][1::]
+                    tmp += i + '\n'
         await self.bot.say(tmp)
 
 def setup(bot):
