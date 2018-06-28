@@ -111,5 +111,14 @@
 {"name": "Hassan of the Hundred Persona", "stars": "3", "sclass": "Assassin", "image_url": "https://fate-go.cirnopedia.org/icons/servant/servant_1101.png"},
 {"name": "Irisviel (Dress of Heaven)", "stars": "4", "sclass": "Caster", "image_url": "https://fate-go.cirnopedia.org/icons/servant/servant_1111.png"},
 {"name": "Shuten-Douji", "stars": "5", "sclass": "Assassin", "image_url": "https://fate-go.cirnopedia.org/icons/servant/servant_1121.png"},
-{"name": "Xuanzang Sanzang", "stars": "5", "sclass": "Caster", "image_url": "https://fate-go.cirnopedia.org/icons/servant/servant_1131.png"}
+{"name": "Xuanzang Sanzang", "stars": "5", "sclass": "Caster", "image_url": "https://fate-go.cirnopedia.org/icons/servant/servant_1131.png"},
+{"name": "Minamoto-no-Raikou", "stars": "5", "sclass": "Berserker", "image_url": "https://fate-go.cirnopedia.org/icons/servant/servant_1141.png"},
+{"name": "Sakata Kintoki", "stars": "4", "sclass": "Rider", "image_url": "https://fate-go.cirnopedia.org/icons/servant/servant_1151.png"},
+{"name": "Ibaraki-Douji", "stars": "4", "sclass": "Berserker", "image_url": "https://fate-go.cirnopedia.org/icons/servant/servant_1161.png"},
+{"name": "Fuuma “Evil-wind” Kotarou", "stars": "3", "sclass": "Assassin", "image_url": "https://fate-go.cirnopedia.org/icons/servant/servant_1171.png"},
+  {"name": "Ozymandias", "stars": "5", "sclass": "Rider", "image_url": "https://fate-go.cirnopedia.org/icons/servant/servant_1181.png"},
+  {"name": "Nitocris", "stars": "4", "sclass": "Caster", "image_url": "https://fate-go.cirnopedia.org/icons/servant/servant_1201.png"},
+  {"name": "Hassan of the Serenity", "stars": "3", "sclass": "Assassin", "image_url": "https://fate-go.cirnopedia.org/icons/servant/servant_1241.png"},
+  {"name": "Lancelot", "stars": "4", "sclass": "Saber", "image_url": "https://fate-go.cirnopedia.org/icons/servant/servant_1211.png"},
+  {"name": "Tawara Touta", "stars": "3", "sclass": "Archer", "image_url": "https://fate-go.cirnopedia.org/icons/servant/servant_1251.png"}
 ]
