@@ -3,43 +3,46 @@ from main import bot
 from fgo import fgoroll
 from discord.ext import commands
 
-class FgoCommands():
+
+class FgoCommands:
     def __init__(self, bot):
         self.bot = bot
+        self.fgodb = fgoroll.Fgodb()
+        self.gacha = fgoroll.Gacha(fgodb)
 
     @commands.command(pass_context=True)
-    async def roll(self,ctx, number=1, mode="Story", is_ticket="False", is_pretty="False"):
-        # TODO: Faire en sorte que fgodb et gacha soient initialisable au lancement du bot, et pas à chaque roll
-        fgodb = fgoroll.Fgodb()
-        gacha = fgoroll.Gacha(fgodb)
-
-        if gacha.check_mode(mode):
-            gacha.change_mode(mode)
-            result = gacha.simulate(number, is_ticket)
+    async def roll(self,ctx, number=1, mode="Story", is_ticket=False, is_pretty=False):
+        if self.gacha.check_mode(mode):
+            r = fgoroll.Roll(self.gacha, mode, number, is_ticket)
 
             if is_pretty == "True":
-                await show_pretty_roll(result, gacha, ctx)
+                await self.show_pretty_roll(r, ctx)
             else:
-                await show_roll(result)
+                await self.show_roll(r.result)
         else:
-            msg = "Mode inexistant"
+            msg = "Mode inexistant."
+            msg += " Le format de la commande est : !roll nombre mode ticket? pretty?." \
+                  " Exemple: !roll 10 Story False True"
             await self.bot.say(msg)
-
+            msg2 = "Les campagnes disponibles sont : Story"
+            for c in self.gacha.campaigns:
+                msg2 += ", " + c.title
+            await self.bot.say(msg2)
 
     async def show_roll(self,result):
-        for pulled in result:
-            if isinstance(pulled, fgoroll.Servant):
-                msg = str(pulled.name) + "   (" + str(pulled.sclass) + ")   " + str(pulled.stars) + "⭐\n"
-                images = " " + str(pulled.image_url)
+        for r in result:
+            if isinstance(r, fgoroll.Servant):
+                msg = str(r.name) + "   (" + str(r.sclass) + ")   " + str(r.stars) + "⭐\n"
+                images = " " + str(r.image_url)
             else:
-                msg = str(pulled.name) + "   " + str(pulled.stars) + "⭐\n"
-                images = " " + str(pulled.image_url)
+                msg = str(r.name) + "   " + str(r.stars) + "⭐\n"
+                images = " " + str(r.image_url)
             await self.bot.say(msg + "\n" + images)
             await asyncio.sleep(5)
 
-    async def show_pretty_roll(self,result, gacha, ctx):
-        msg_queue = gacha.pretty_print(result)
-        await self.bot.say("Roll en cours... (x" + str(len(result)) + ")")
+    async def show_pretty_roll(self, r, ctx):
+        msg_queue = r.pretty_print()
+        await self.bot.say("Roll en cours... (x" + str(len(r.result)) + ")")
         for mes in msg_queue:
             if mes['type'] == "upload":
                 await self.bot.upload(mes['content'])
@@ -53,5 +56,23 @@ class FgoCommands():
     async def is_bot(self,m):
         return m.author == self.bot.user
 
+
 def setup(bot):
     bot.add_cog(FgoCommands(bot))
+
+
+# # TEST
+# fgodb = fgoroll.Fgodb()
+# gacha = fgoroll.Gacha(fgodb)
+# roll = fgoroll.Roll(gacha,"Camelot Pickup Summon",10,False)
+#
+# print("===ROLL===")
+# for pulled in roll.result:
+#     if isinstance(pulled, fgoroll.Servant):
+#         msg = str(pulled.name) + "   (" + str(pulled.sclass) + ")   " + str(pulled.stars) + "⭐\n"
+#         images = " " + str(pulled.image_url)
+#     else:
+#         msg = str(pulled.name) + "   " + str(pulled.stars) + "⭐\n"
+#         images = " " + str(pulled.image_url)
+#     print(msg)
+# print("===END===")
