@@ -1,6 +1,6 @@
 import scrapy
 
-from fgo.fgoScrap import EssenceItem
+from fgoScrap.items import EssenceItem
 
 
 #scrapy crawl essencelist -o [nom-de-loutput].json

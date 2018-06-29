@@ -1,6 +1,6 @@
 import scrapy
 
-from fgo.fgoScrap import ServantItem
+from fgoScrap.items import ServantItem
 
 
 #scrapy crawl servantlist -o [nom-de-loutput].json
