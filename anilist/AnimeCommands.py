@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+import logging
 
 from random import randint
 from urllib.request import urlopen
@@ -11,6 +12,7 @@ MAX_ID=11000
 class AnimeCommands():
     def __init__(self, bot):
         self.bot = bot
+        self.logger = logging.getLogger('AstroLog')
 
     @commands.command()
     async def randomMAL(self):
@@ -22,7 +24,7 @@ class AnimeCommands():
         soup = BeautifulSoup(html, "html.parser")
         title =  soup.find("div", {"id": "page-title"}).find("h1", {"id": "page_header"}).contents[0]
         tmp += '__**' + str(title) + '**__\n\n'
-        print(tmp)
+        self.logger.debug(tmp)
         ratingText =  soup.find("div", {"id": "ratingbox"})
         if ratingText is None:
             tmp += 'No evalutation here'

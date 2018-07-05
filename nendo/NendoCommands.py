@@ -4,11 +4,13 @@ from discord.ext import commands
 import asyncio
 from nendo import tumblrpy
 import requests
+import logging
 
 class NendoCommands():
 
     def __init__(self, bot):
         self.bot = bot
+        self.logger = logging.getLogger('AstroLog')
 
     @commands.command()
     async def nendo(self):
@@ -20,18 +22,21 @@ class NendoCommands():
             with open('nendo/cache.jpg', 'wb') as handler:
                 handler.write(img_data)
             with open('nendo/cache.jpg', 'rb') as f:
-                print(tmp)
+                self.logger.debug(tmp)
                 await self.bot.send_message(self.bot.get_channel('178652769891123200'), tmp)
                 await self.bot.send_file(self.bot.get_channel('178652769891123200'), f)
 
 def setup(bot):
     bot.add_cog(NendoCommands(bot))
 
+logger = logging.getLogger('AstroLog')
+
 #Method used for background task
 async def check_nendo(bot):
     await bot.wait_until_ready()
-    print('Background task check_nendo operative')
+    logger.info('Background task check_nendo operative')
     while not bot.is_closed:
+        self.logger.info('Executing check_nendo')
         announce = tumblrpy.run()
         for nendo in announce:
             url = nendo[0]
