@@ -3,6 +3,8 @@ import asyncio
 import logging
 from main import bot
 
+logger = logging.getLogger('AstroLog')
+
 async def check_nya(bot):
     await bot.wait_until_ready()
     channel = [channel for channel in bot.get_all_channels() if channel.name == 'bot'][0]
