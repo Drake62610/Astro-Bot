@@ -1,17 +1,17 @@
 import asyncio
-import recastai
 import discord
+import logging
 
 from discord.ext import commands
 
 class Events:
     def __init__(self, bot):
         self.bot = bot
+        self.logger = logging.getLogger('AstroLog')
 
     async def on_ready(self):
-        print('Logged in as')
         await self.bot.change_presence(game=discord.Game(name='Waifu Fight - Tentacle School Life Edition'))
-        print(self.bot.user.name)
+        self.logger.info('Logged in as ' + self.bot.user.name)
 
     async def on_message(self,message):
 

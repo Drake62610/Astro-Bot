@@ -1,12 +1,14 @@
 from nyaa import nyaaRSS
 import asyncio
+import logging
 from main import bot
 
+logger = logging.getLogger('AstroLog')
 
 async def check_nya(bot):
     await bot.wait_until_ready()
     channel = [channel for channel in bot.get_all_channels() if channel.name == 'bot'][0]
-    print('Background task check_nya operative')
+    self.logger.info('Background task check_nya operative')
     while not bot.is_closed:
         announce = nyaaRSS.run()
         if announce:

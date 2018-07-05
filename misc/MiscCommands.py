@@ -1,10 +1,12 @@
 import discord
 from discord.ext import commands
 import random
+import logging
 
 class MiscCommands():
     def __init__(self, bot):
         self.bot = bot
+        self.logger = logging.getLogger('AstroLog')
 
     # USELESS
     @commands.command(pass_context=True)
@@ -22,7 +24,7 @@ class MiscCommands():
 
     @commands.command()
     async def hello(self):
-        print("coucou")
+        self.logger.debug("coucou")
         await self.bot.say("Bip Boop (Hello World !)")
 
 
@@ -41,7 +43,7 @@ class MiscCommands():
     @commands.command()
     async def addTheme(self, word):
         word = word.split(',')
-        print(word)
+        self.logger.debug(word)
         with open('misc/theme.db', 'a') as f:
             for i in word:
                 f.write(i + '\n')
