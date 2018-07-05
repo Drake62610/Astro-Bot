@@ -29,6 +29,8 @@ class NendoCommands():
 def setup(bot):
     bot.add_cog(NendoCommands(bot))
 
+logger = logging.getLogger('AstroLog')
+    
 #Method used for background task
 async def check_nendo(bot):
     await bot.wait_until_ready()
