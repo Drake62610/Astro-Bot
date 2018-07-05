@@ -36,7 +36,7 @@ async def check_nendo(bot):
     await bot.wait_until_ready()
     logger.info('Background task check_nendo operative')
     while not bot.is_closed:
-        self.logger.info('Executing check_nendo')
+        logger.info('Executing check_nendo')
         announce = tumblrpy.run()
         for nendo in announce:
             url = nendo[0]
