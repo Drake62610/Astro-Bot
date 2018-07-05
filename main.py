@@ -65,10 +65,10 @@ if __name__ == "__main__":
             exc = '{}: {}'.format(type(e).__name__, e)
             logger.warning('Failed to load extension {}\n{}'.format(extension, exc))
 
-	# Background task
-	from nyaa import nyaaCommands
-	bot.loop.create_task(nyaaCommands.check_nya(bot))
-	from nendo import NendoCommands
-	bot.loop.create_task(NendoCommands.check_nendo(bot))
-	# Start
+    # Background task
+    from nyaa import nyaaCommands
+    bot.loop.create_task(nyaaCommands.check_nya(bot))
+    from nendo import NendoCommands
+    bot.loop.create_task(NendoCommands.check_nendo(bot))
+    # Start
     bot.run(main_key)
