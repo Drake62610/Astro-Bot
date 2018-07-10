@@ -37,7 +37,7 @@ def run():
                     break
                 #Now we send it to image
                 announce.append([url,name,link])
-                self.logger.debug(announce)
+                logger.debug(announce)
     updatedb(announce)
     return announce
 
