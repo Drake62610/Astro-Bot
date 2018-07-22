@@ -14,9 +14,9 @@ from keys import *
 
 startup_extensions = ['events.Events',
                       'nendo.NendoCommands',
-                      'fgo.FgoCommands',
+#                      'fgo.FgoCommands',
                       'misc.MiscCommands',
-                      'anilist.AnimeCommands',
+#                      'anilist.AnimeCommands',
                       'SCP807.ScpCommands']
 
 # Logger
