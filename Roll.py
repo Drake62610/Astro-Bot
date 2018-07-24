@@ -2,20 +2,11 @@ from random import *
 
 resultat=[]
 
-nb_de = (input("Entrez le nombre de dés : "))
 
-try:
-    nb_de = int(nb_de)
-except:
-    print("Ce n'est pas une nombre positive")
-
-nb_face = (input("Entrez le nombre de faces: "))
-
-try:
-    nb_face = int(nb_face)
-except:
-    print("Ce n'est pas un nombre positive")
-
+input = (input("Entrez les paramètres des dés, par exemple 1d6 : "))
+#traintement de l'input
+nb_de = int(input.split('d')[0])
+nb_face = int(input.split('d')[1])
 
 
 def lancer(nb_de,nb_face):
