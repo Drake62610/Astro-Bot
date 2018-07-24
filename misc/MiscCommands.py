@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 import random
 import logging
+from vote import roll
 
 class MiscCommands():
     def __init__(self, bot):
@@ -13,6 +14,13 @@ class MiscCommands():
     async def help(self,ctx):
         await self.bot.send_message(await self.bot.start_private_message(ctx.message.author), "yo bitch")
 
+    @commands.command(pass_context=True)
+    async def roll(self,ctx, input):
+        tmp = ''
+        result = roll.lancer(input)
+        for i in result:
+            tmp += str(i) + ' '
+        await self.bot.say(tmp)
 
     @commands.command(pass_context=True)
     async def joined_at(self,ctx, member: discord.Member = None):
