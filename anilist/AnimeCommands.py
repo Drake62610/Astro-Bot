@@ -1,13 +1,13 @@
 import discord
 from discord.ext import commands
 import logging
+import requests
 
 from random import randint
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
 
-MIN_ID=1
-MAX_ID=11000
+url = 'https://graphql.anilist.co'
 
 class AnimeCommands():
     def __init__(self, bot):
@@ -15,33 +15,45 @@ class AnimeCommands():
         self.logger = logging.getLogger('AstroLog')
 
     @commands.command()
-    async def randomMAL(self):
-        tmp=''
-        animeId = getRandomId()
-        url = "http://www.animenewsnetwork.com/encyclopedia/anime.php?id=%s" % str(animeId)
-        html = urlopen(url)
-        html = html.read()
-        soup = BeautifulSoup(html, "html.parser")
-        title =  soup.find("div", {"id": "page-title"}).find("h1", {"id": "page_header"}).contents[0]
-        tmp += '__**' + str(title) + '**__\n\n'
-        self.logger.debug(tmp)
-        ratingText =  soup.find("div", {"id": "ratingbox"})
-        if ratingText is None:
-            tmp += 'No evalutation here'
-        else:
-            ratingText = ratingText.find_all('span')
-            for i in ratingText:
-                i = str(i)
-                if 'vote' in i:
-                    i = i.split('<span>')[1][1::]
-                    tmp += i + '\n'
-        await self.bot.say(tmp)
+    async def randomANL(self):
+         #First Query to obtain number of pages
+        query = '''
+        {
+          Page(page:1,perPage:1){
+            media(type:ANIME){
+              id
+            }
+            pageInfo{
+              lastPage
+            }
+          }
+        }
+        '''
+        variables = {}
+        response = requests.post(url, json={'query': query, 'variables' : variables})
+        pages = response.json()['data']['Page']['pageInfo']['lastPage']
+
+        #Get a random page
+        random = randint(0, pages)
+
+        #Second query to obtain random anime
+        query = '''
+        query($random:Int){
+         Page(page:$random, perPage:1){
+          media(type:ANIME){
+            title{
+              romaji
+            }
+          }
+        }
+        }
+        '''
+        variables = {'random' : random}
+        response = requests.post(url, json={'query': query, 'variables': variables})
+        await self.bot.say(response.json()['data']['Page']['media'][0]['title']['romaji'])
 
 def setup(bot):
     bot.add_cog(AnimeCommands(bot))
-
-def getRandomId():
-  return randint(MIN_ID, MAX_ID)
 
 # def isManga(self):
 #     return "manga" in self.title
