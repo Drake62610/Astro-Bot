@@ -29,13 +29,11 @@ def isindb(post):
 
 def updatedb(list):
     with open(db,'a') as data:
-        logger.debug('nyaa db opened')
         for post in list:
             link = post.description.split('<a href=\"')[1].split('\">')[0]
             tmp = post.title + "|" + str(current_timestamp) + "|" + link
             data.write(tmp + "\n")
             logger.debug(tmp + ' added to nyaa db')
-        logger.debug('nyaa db closed')
         data.close
 
 def run():
