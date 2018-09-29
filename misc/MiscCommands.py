@@ -3,6 +3,7 @@ from discord.ext import commands
 import random
 import logging
 from vote import roll
+from keys import ovwtxt
 
 class MiscCommands():
     def __init__(self, bot):
@@ -65,6 +66,14 @@ class MiscCommands():
                 tmp.append(line)
         await self.bot.say('Le theme sera : ' + random.choice(tmp))
 
+    @commands.command(pass_context=True)
+    async def overwatchID(self,ctx):
+        if "membres du crew" in [y.name.lower() for y in ctx.message.author.roles]:
+            await self.bot.send_message(await self.bot.start_private_message(ctx.message.author), ovwtxt)
+
+    @commands.command()
+    async def overwatchCLST(self):
+        pass
 
 def setup(bot):
     bot.add_cog(MiscCommands(bot))
