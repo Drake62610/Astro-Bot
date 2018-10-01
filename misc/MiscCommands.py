@@ -68,9 +68,13 @@ class MiscCommands():
 
     @commands.command(pass_context=True)
     async def overwatchID(self,ctx):
-        if "membres du crew" in [y.name.lower() for y in ctx.message.author.roles]:
+        self.logger.debug("overwatchID called by " + str(ctx.message.author))
+        if "membres du crew" in [y.name.lower() for y in ctx.message.author.roles] or "employés netflix" in [y.name.lower() for y in ctx.message.author.roles]:
+            await self.bot.say("Je vous envoie les identifiants par MP !")
             await self.bot.send_message(await self.bot.start_private_message(ctx.message.author), ovwtxt)
-
+        else:
+            drake = ctx.message.server.get_member_named("Drake62610")
+            await self.bot.say("Vous n'êtes pas autorisé à acceder aux identifiants pour le moments, n'hésitez pas à contacter " + drake.mention + " si vous souhaitez les obtenirs.")
     @commands.command()
     async def overwatchCLST(self):
         pass
