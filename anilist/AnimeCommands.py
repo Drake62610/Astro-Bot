@@ -14,8 +14,13 @@ class AnimeCommands():
         self.bot = bot
         self.logger = logging.getLogger('AstroLog')
 
-    @commands.command()
-    async def randomANL(self,*nums):
+    #Pas de gestion d'erreur sur le log de debut
+    @commands.command(pass_context=True)
+    async def randomANL(self,ctx,*nums):
+        param = ""
+        for i in nums:
+            param = str(i) + " "
+        self.logger.info("randomANL called by "+ str(ctx.message.author)+" with parameter : " + param)
         link = ""
          #First Query to obtain number of pages
         query = '''
