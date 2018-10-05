@@ -118,7 +118,7 @@ class MiscCommands():
                     msg = msg + " :no_bicycles:"
                 msg = msg + "\n"
                 #Capacité max
-                msg = msg + "-nbplacesdispo : " + str(fields["nbplacesdispo"])
+                msg = msg + " -nbplacesdispo : " + str(fields["nbplacesdispo"])
                 if fields["nbplacesdispo"] == 0:
                     msg = msg + " :no_bicycles:"
                 msg = msg + "\n"
