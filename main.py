@@ -67,7 +67,7 @@ if __name__ == "__main__":
 
     # Background task
     from nyaa import nyaaCommands
-    #bot.loop.create_task(nyaaCommands.check_nya(bot))
+    bot.loop.create_task(nyaaCommands.check_nya(bot))
     from nendo import NendoCommands
     #bot.loop.create_task(NendoCommands.check_nendo(bot))
     # Start

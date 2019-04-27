@@ -44,20 +44,15 @@ def run():
 
 def isindb(name):
     with open(db, 'r') as data:
-        logger.debug('Nendo db opened')
         for line in data:
             if name in line:
                 data.close
                 return True
     data.close
-    logger.debug('Nendo db closed')
     return False
 
 def updatedb(list):
     with open(db,'a') as data:
-        logger.debug('Nendo db opened')
         for post in list:
             data.write(post[1] + '\n')
-            logger.debug(post[1] + ' added to Nendo db')
-        logger.debug('Nendo db closed')
         data.close

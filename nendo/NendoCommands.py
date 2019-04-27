@@ -23,14 +23,14 @@ class NendoCommands():
                 handler.write(img_data)
             with open('nendo/cache.jpg', 'rb') as f:
                 self.logger.debug(tmp)
-                await self.bot.send_message(self.bot.get_channel('178652769891123200'), tmp)
-                await self.bot.send_file(self.bot.get_channel('178652769891123200'), f)
+                await self.bot.send_message(self.bot.get_channel('370552530213666817'), tmp)
+                await self.bot.send_file(self.bot.get_channel('370552530213666817'), f)
 
 def setup(bot):
     bot.add_cog(NendoCommands(bot))
 
 logger = logging.getLogger('AstroLog')
-    
+
 #Method used for background task
 async def check_nendo(bot):
     await bot.wait_until_ready()
