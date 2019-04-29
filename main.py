@@ -12,12 +12,12 @@ from logging.handlers import RotatingFileHandler
 from discord.ext import commands
 from keys import *
 
-startup_extensions = ['events.Events',
-                      'nendo.NendoCommands',
-#                      'fgo.FgoCommands',
-                      'misc.MiscCommands',
-                      'anilist.AnimeCommands',
-                      'SCP807.ScpCommands']
+startup_extensions = [
+                        'events.Events',
+                        'nendo.NendoCommands',
+                        'misc.MiscCommands',
+#                        'anilist.AnimeCommands'
+                      ]
 
 # Logger
 logger = logging.getLogger('AstroLog')
@@ -54,6 +54,11 @@ async def unload(extension_name : str):
     bot.unload_extension(extension_name)
     await bot.say("{} unloaded.".format(extension_name))
 
+@bot.event
+async def on_ready():
+    activity = discord.Game(name='Waifu Fight - Tentacle School Life Edition')
+    await bot.change_presence(activity=activity)
+    logger.info('Logged in as ' + bot.user.name)
 
 if __name__ == "__main__":
     logger.info('Starting Astro Bot ...')
@@ -66,9 +71,9 @@ if __name__ == "__main__":
             logger.warning('Failed to load extension {}\n{}'.format(extension, exc))
 
     # Background task
-    from nyaa import nyaaCommands
-    bot.loop.create_task(nyaaCommands.check_nya(bot))
-    from nendo import NendoCommands
+    # from nyaa import nyaaCommands
+    # bot.loop.create_task(nyaaCommands.check_nya(bot))
+    # from nendo import NendoCommands
     #bot.loop.create_task(NendoCommands.check_nendo(bot))
     # Start
     bot.run(main_key)

@@ -5,15 +5,12 @@ import recastai
 
 from discord.ext import commands
 
-class Events:
+class Events(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.logger = logging.getLogger('AstroLog')
 
-    async def on_ready(self):
-        await self.bot.change_presence(game=discord.Game(name='Waifu Fight - Tentacle School Life Edition'))
-        self.logger.info('Logged in as ' + self.bot.user.name)
-
+    @commands.Cog.listener()
     async def on_message(self,message):
 
         # RECAST
@@ -21,7 +18,7 @@ class Events:
             if not str(message.author) == "Astro Bot#9191" and not message.content[0] == "!":
                 client = recastai.Client('9d1a465da0eeabc77ea479fe567c6202')
                 response = client.request.converse_text(str(message.content))
-                await self.bot.send_message(message.channel, response.reply)
+                await message.channel.send(response.reply)
 
         # OTHER
         if (message.content.startswith('Aurevoir Astro Bot') or message.content.startswith('Sayonara Astro Bot')):
