@@ -26,3 +26,9 @@ ExtensionNotFound: Extension 'src.module.anilist.AnimeCommands' could not be loa
 2019-05-04 16:19:30,864 :: INFO :: Extension src.module.nendo.NendoCommands has been loaded.
 2019-05-04 16:19:30,870 :: INFO :: Extension src.module.misc.MiscCommands has been loaded.
 2019-05-04 16:19:30,990 :: INFO :: Extension src.module.anilist.AnimeCommands has been loaded.
+2019-05-04 16:21:58,682 :: INFO :: Starting Astro Bot ...
+2019-05-04 16:21:58,732 :: INFO :: Extension src.module.events.Events has been loaded.
+2019-05-04 16:21:58,772 :: INFO :: Extension src.module.nendo.NendoCommands has been loaded.
+2019-05-04 16:21:58,783 :: INFO :: Extension src.module.misc.MiscCommands has been loaded.
+2019-05-04 16:21:58,895 :: INFO :: Extension src.module.anilist.AnimeCommands has been loaded.
+2019-05-04 16:22:01,746 :: INFO :: Logged in as Astro Bot

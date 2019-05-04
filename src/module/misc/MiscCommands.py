@@ -3,7 +3,7 @@ from discord.ext import commands
 import random
 import logging
 import requests
-from vote import roll
+from src.trashy.vote import roll
 
 class MiscCommands(commands.Cog):
     def __init__(self, bot):
