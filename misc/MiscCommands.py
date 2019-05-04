@@ -4,7 +4,6 @@ import random
 import logging
 import requests
 from vote import roll
-from keys import ovwtxt
 
 class MiscCommands(commands.Cog):
     def __init__(self, bot):
