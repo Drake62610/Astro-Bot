@@ -13,10 +13,10 @@ from discord.ext import commands
 from keys import *
 
 startup_extensions = [
-                        'events.Events',
-                        'nendo.NendoCommands',
-                        'misc.MiscCommands',
-#                        'anilist.AnimeCommands'
+                        'src.module.events.Events',
+                        'src.module.nendo.NendoCommands',
+                        'src.module.misc.MiscCommands',
+                        'src.module.anilist.AnimeCommands'
                       ]
 
 # Logger

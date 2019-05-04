@@ -9,13 +9,14 @@ from bs4 import BeautifulSoup
 
 url = 'https://graphql.anilist.co'
 
-class AnimeCommands():
+class AnimeCommands(commands.Cog):
+
     def __init__(self, bot):
         self.bot = bot
         self.logger = logging.getLogger('AstroLog')
 
     #Pas de gestion d'erreur sur le log de debut
-    @commands.command(pass_context=True)
+    @commands.command()
     async def randomANL(self,ctx,*nums):
         param = ""
         for i in nums:
@@ -76,7 +77,7 @@ class AnimeCommands():
         #
         #     if("-i" in nums):
         #         pass
-        await self.bot.say("Vous avez tiré : " +
+        await ctx.send("Vous avez tiré : " +
                            "\n**__Titre :__** "     + title +
                            "\n**__Genre(s) :__** " + strGenre +
                            "\n**__Tag(s) :__** " + strTag +
@@ -89,7 +90,7 @@ class AnimeCommands():
         title = resp['title']['romaji']
         link = "https://anilist.co/"+ type.lower() + "/" + str(resp['id'])
         print(resp)
-        await self.bot.say(title + "\n" + link)
+        await ctx.send(title + "\n" + link)
 
 def setup(bot):
     bot.add_cog(AnimeCommands(bot))

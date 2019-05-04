@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 
 import asyncio
-from nendo import tumblrpy
+from src.module.nendo import tumblrpy
 import requests
 import logging
 
