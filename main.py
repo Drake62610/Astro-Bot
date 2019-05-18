@@ -16,7 +16,8 @@ startup_extensions = [
                         'src.module.events.Events',
                         'src.module.nendo.NendoCommands',
                         'src.module.misc.MiscCommands',
-                        'src.module.anilist.AnimeCommands'
+                        'src.module.anilist.AnimeCommands',
+                        'src.module.administration.AdminCommands'
                       ]
 
 # Logger

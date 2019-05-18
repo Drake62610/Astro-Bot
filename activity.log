@@ -32,3 +32,37 @@ ExtensionNotFound: Extension 'src.module.anilist.AnimeCommands' could not be loa
 2019-05-04 16:21:58,783 :: INFO :: Extension src.module.misc.MiscCommands has been loaded.
 2019-05-04 16:21:58,895 :: INFO :: Extension src.module.anilist.AnimeCommands has been loaded.
 2019-05-04 16:22:01,746 :: INFO :: Logged in as Astro Bot
+2019-05-18 09:14:59,291 :: INFO :: Starting Astro Bot ...
+2019-05-18 09:14:59,451 :: INFO :: Extension src.module.events.Events has been loaded.
+2019-05-18 09:14:59,568 :: INFO :: Extension src.module.nendo.NendoCommands has been loaded.
+2019-05-18 09:14:59,574 :: INFO :: Extension src.module.misc.MiscCommands has been loaded.
+2019-05-18 09:14:59,765 :: INFO :: Extension src.module.anilist.AnimeCommands has been loaded.
+2019-05-18 09:15:04,436 :: INFO :: Logged in as Astro Bot
+2019-05-18 16:56:57,304 :: INFO :: Starting Astro Bot ...
+2019-05-18 16:56:57,423 :: INFO :: Extension src.module.events.Events has been loaded.
+2019-05-18 16:56:57,525 :: INFO :: Extension src.module.nendo.NendoCommands has been loaded.
+2019-05-18 16:56:57,539 :: INFO :: Extension src.module.misc.MiscCommands has been loaded.
+2019-05-18 16:56:57,544 :: WARNING :: Failed to load extension src.module.anilist.AnimeCommands
+ExtensionNotFound: Extension 'src.module.anilist.AnimeCommands' could not be loaded.
+2019-05-18 16:57:00,448 :: INFO :: Logged in as Astro Bot
+2019-05-18 16:58:35,293 :: INFO :: Starting Astro Bot ...
+2019-05-18 16:58:35,351 :: INFO :: Extension src.module.events.Events has been loaded.
+2019-05-18 16:58:35,401 :: INFO :: Extension src.module.nendo.NendoCommands has been loaded.
+2019-05-18 16:58:35,419 :: INFO :: Extension src.module.misc.MiscCommands has been loaded.
+2019-05-18 16:58:35,421 :: WARNING :: Failed to load extension src.module.anilist.AnimeCommands
+ExtensionNotFound: Extension 'src.module.anilist.AnimeCommands' could not be loaded.
+2019-05-18 16:58:38,796 :: INFO :: Logged in as Astro Bot
+2019-05-18 11:47:10,479 :: INFO :: Starting Astro Bot ...
+2019-05-18 11:47:10,682 :: INFO :: Extension src.module.events.Events has been loaded.
+2019-05-18 11:47:10,794 :: INFO :: Extension src.module.nendo.NendoCommands has been loaded.
+2019-05-18 11:47:10,802 :: INFO :: Extension src.module.misc.MiscCommands has been loaded.
+2019-05-18 11:47:11,012 :: INFO :: Extension src.module.anilist.AnimeCommands has been loaded.
+2019-05-18 11:47:11,020 :: WARNING :: Failed to load extension src.module.administration.AdminCommands
+NameError: name 'logging' is not defined
+2019-05-18 11:47:14,547 :: INFO :: Logged in as Astro Bot
+2019-05-18 11:47:30,518 :: INFO :: Starting Astro Bot ...
+2019-05-18 11:47:30,628 :: INFO :: Extension src.module.events.Events has been loaded.
+2019-05-18 11:47:30,693 :: INFO :: Extension src.module.nendo.NendoCommands has been loaded.
+2019-05-18 11:47:30,701 :: INFO :: Extension src.module.misc.MiscCommands has been loaded.
+2019-05-18 11:47:30,903 :: INFO :: Extension src.module.anilist.AnimeCommands has been loaded.
+2019-05-18 11:47:30,912 :: INFO :: Extension src.module.administration.AdminCommands has been loaded.
