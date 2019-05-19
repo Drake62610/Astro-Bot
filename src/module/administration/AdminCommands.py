@@ -73,6 +73,65 @@ class AdminCommands(commands.Cog):
                         Bonne lecture !"
         await member.send(join_message)
 
+    @commands.Cog.listener()
+    async def on_raw_reaction_add(self, payload):
+        # Role reaction detection
+        if payload.channel_id == 571774099911606284:
+            # Each case represent a role to give compare emoji "name"
+            celestis_guild_id = 161079565832159232
+            weab_role_id = 571783195973124113
+            ow_role_id = 571783638757408783
+            yugioh_role_id = 571784801431060492
+            tabletop_role_id = 571783820722962452
+            minecraft_role_id = 571783779517988904
+            carte_role_id = 571783602157649922
+            jdr_role_id = 571783692754878507
+            if payload.emoji.name == '🇯🇵':
+                role = self.bot.get_guild(celestis_guild_id).get_role(weab_role_id)
+            elif payload.emoji.name == 'OW':
+                role = self.bot.get_guild(celestis_guild_id).get_role(ow_role_id)
+            elif payload.emoji.name == 'kuribo':
+                role = self.bot.get_guild(celestis_guild_id).get_role(yugioh_role_id)
+            elif payload.emoji.name == 'tabouret':
+                role = self.bot.get_guild(celestis_guild_id).get_role(tabletop_role_id)
+            elif payload.emoji.name == 'dark':
+                role = self.bot.get_guild(celestis_guild_id).get_role(minecraft_role_id)
+            elif payload.emoji.name == '🗺':
+                role = self.bot.get_guild(celestis_guild_id).get_role(carte_role_id)
+            elif payload.emoji.name == '🎲':
+                role = self.bot.get_guild(celestis_guild_id).get_role(jdr_role_id)
+
+            await self.bot.get_guild(celestis_guild_id).get_member(payload.user_id).add_roles(role)
+
+    @commands.Cog.listener()
+    async def on_raw_reaction_remove(self, payload):
+        # Role reaction detection
+        if payload.channel_id == 571774099911606284:
+            # Each case represent a role to give compare emoji "name"
+            celestis_guild_id = 161079565832159232
+            weab_role_id = 571783195973124113
+            ow_role_id = 571783638757408783
+            yugioh_role_id = 571784801431060492
+            tabletop_role_id = 571783820722962452
+            minecraft_role_id = 571783779517988904
+            carte_role_id = 571783602157649922
+            jdr_role_id = 571783692754878507
+            if payload.emoji.name == '🇯🇵':
+                role = self.bot.get_guild(celestis_guild_id).get_role(weab_role_id)
+            elif payload.emoji.name == 'OW':
+                role = self.bot.get_guild(celestis_guild_id).get_role(ow_role_id)
+            elif payload.emoji.name == 'kuribo':
+                role = self.bot.get_guild(celestis_guild_id).get_role(yugioh_role_id)
+            elif payload.emoji.name == 'tabouret':
+                role = self.bot.get_guild(celestis_guild_id).get_role(tabletop_role_id)
+            elif payload.emoji.name == 'dark':
+                role = self.bot.get_guild(celestis_guild_id).get_role(minecraft_role_id)
+            elif payload.emoji.name == '🗺':
+                role = self.bot.get_guild(celestis_guild_id).get_role(carte_role_id)
+            elif payload.emoji.name == '🎲':
+                role = self.bot.get_guild(celestis_guild_id).get_role(jdr_role_id)
+
+            await self.bot.get_guild(celestis_guild_id).get_member(payload.user_id).remove_roles(role)
 
 def setup(bot):
     bot.add_cog(AdminCommands(bot))
