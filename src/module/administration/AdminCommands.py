@@ -68,17 +68,26 @@ class AdminCommands(commands.Cog):
         """Send a private message to the joiner in order to inform him what to do"""
         join_message = "Bienvenue sur le server de Celestis !\n\
                         Afin de pouvoir avoir accès au reste du serveur tu dois lire le règlement qui se situe dans ```#accueil```!\n\
-                        Quand c'est fait nous te demandons de remplir la condition indiqué à la fin du post et je te donnerai le rôle d'invité.\n\
+                        Quand c'est fait nous te demandons de remplir la condition indiquée à la fin du post et je te donnerai le rôle d'invité.\n\
                         \n\
                         Bonne lecture !"
         await member.send(join_message)
 
+    # Give roles commands
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
-        # Role reaction detection
+        celestis_guild_id = 161079565832159232
+        # Accept reglement detection, watch rules message
+        if payload.message_id == 178672774263341067:
+            arrivant_role_id = 183244699329363972
+            print(payload.emoji.name)
+            if payload.emoji.name == '🆗':
+                role = self.bot.get_guild(celestis_guild_id).get_role(arrivant_role_id)
+                await self.bot.get_guild(celestis_guild_id).get_member(payload.user_id).add_roles(role)
+
+        # Role reaction detection, watch #rules channel
         if payload.channel_id == 571774099911606284:
-            # Each case represent a role to give compare emoji "name"
-            celestis_guild_id = 161079565832159232
+            # Each case represent a role to give compare emoji "name"            
             weab_role_id = 571783195973124113
             ow_role_id = 571783638757408783
             yugioh_role_id = 571784801431060492
