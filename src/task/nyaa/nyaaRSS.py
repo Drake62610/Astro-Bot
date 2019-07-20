@@ -18,13 +18,11 @@ current_timestamp = current_time_millis()
 
 def isindb(post):
     with open(db, 'r') as data:
-        logger.debug('nyaa db opened')
         for line in data:
             if post.title in line:
                 data.close
                 return True
     data.close
-    logger.debug('nyaa db closed')
     return False
 
 def updatedb(list):

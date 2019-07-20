@@ -1,5 +1,6 @@
 __pycache__/
-keys.py
 nyaa\feeds.db
 misc\theme.db
 nendo\cache.jpg
+activity.log
+keys.py
