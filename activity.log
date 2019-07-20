@@ -510,3 +510,65 @@ ExtensionFailed: Extension 'src.module.administration.AdminCommands' raised an e
 2019-07-19 18:01:25,103 :: INFO :: Extension src.module.anilist.AnimeCommands has been loaded.
 2019-07-19 18:01:25,112 :: INFO :: Extension src.module.administration.AdminCommands has been loaded.
 2019-07-19 18:01:39,562 :: INFO :: Logged in as Astro Bot
+2019-07-19 18:13:25,894 :: INFO :: Starting Astro Bot ...
+2019-07-19 18:13:25,964 :: INFO :: Extension src.module.events.Events has been loaded.
+2019-07-19 18:13:26,007 :: INFO :: Extension src.module.nendo.NendoCommands has been loaded.
+2019-07-19 18:13:26,024 :: INFO :: Extension src.module.misc.MiscCommands has been loaded.
+2019-07-19 18:13:26,155 :: INFO :: Extension src.module.anilist.AnimeCommands has been loaded.
+2019-07-19 18:13:26,158 :: WARNING :: Failed to load extension src.module.administration.AdminCommands
+SyntaxError: invalid syntax (AdminCommands.py, line 105)
+2019-07-19 18:13:35,285 :: INFO :: Logged in as Astro Bot
+2019-07-19 18:15:18,266 :: INFO :: Starting Astro Bot ...
+2019-07-19 18:15:18,333 :: INFO :: Extension src.module.events.Events has been loaded.
+2019-07-19 18:15:18,375 :: INFO :: Extension src.module.nendo.NendoCommands has been loaded.
+2019-07-19 18:15:18,383 :: INFO :: Extension src.module.misc.MiscCommands has been loaded.
+2019-07-19 18:15:18,506 :: INFO :: Extension src.module.anilist.AnimeCommands has been loaded.
+2019-07-19 18:15:18,509 :: WARNING :: Failed to load extension src.module.administration.AdminCommands
+SyntaxError: invalid syntax (AdminCommands.py, line 105)
+2019-07-19 18:15:28,930 :: INFO :: Logged in as Astro Bot
+2019-07-19 18:15:43,734 :: INFO :: Starting Astro Bot ...
+2019-07-19 18:15:43,796 :: INFO :: Extension src.module.events.Events has been loaded.
+2019-07-19 18:15:43,842 :: INFO :: Extension src.module.nendo.NendoCommands has been loaded.
+2019-07-19 18:15:43,846 :: INFO :: Extension src.module.misc.MiscCommands has been loaded.
+2019-07-19 18:15:43,974 :: INFO :: Extension src.module.anilist.AnimeCommands has been loaded.
+2019-07-19 18:15:43,978 :: WARNING :: Failed to load extension src.module.administration.AdminCommands
+SyntaxError: invalid syntax (AdminCommands.py, line 105)
+2019-07-19 18:15:57,964 :: INFO :: Logged in as Astro Bot
+2019-07-19 18:17:17,766 :: INFO :: Starting Astro Bot ...
+2019-07-19 18:17:17,847 :: INFO :: Extension src.module.events.Events has been loaded.
+2019-07-19 18:17:17,884 :: INFO :: Extension src.module.nendo.NendoCommands has been loaded.
+2019-07-19 18:17:17,887 :: INFO :: Extension src.module.misc.MiscCommands has been loaded.
+2019-07-19 18:17:18,020 :: INFO :: Extension src.module.anilist.AnimeCommands has been loaded.
+2019-07-19 18:17:18,031 :: INFO :: Extension src.module.administration.AdminCommands has been loaded.
+2019-07-19 18:17:30,486 :: INFO :: Logged in as Astro Bot
+2019-07-19 18:19:24,783 :: INFO :: Starting Astro Bot ...
+2019-07-19 18:19:24,852 :: INFO :: Extension src.module.events.Events has been loaded.
+2019-07-19 18:19:24,913 :: INFO :: Extension src.module.nendo.NendoCommands has been loaded.
+2019-07-19 18:19:24,917 :: INFO :: Extension src.module.misc.MiscCommands has been loaded.
+2019-07-19 18:19:25,067 :: INFO :: Extension src.module.anilist.AnimeCommands has been loaded.
+2019-07-19 18:19:25,071 :: INFO :: Extension src.module.administration.AdminCommands has been loaded.
+2019-07-19 18:19:40,369 :: INFO :: Logged in as Astro Bot
+2019-07-19 18:21:25,795 :: INFO :: Starting Astro Bot ...
+2019-07-19 18:21:25,839 :: INFO :: Extension src.module.events.Events has been loaded.
+2019-07-19 18:21:25,882 :: INFO :: Extension src.module.nendo.NendoCommands has been loaded.
+2019-07-19 18:21:25,884 :: INFO :: Extension src.module.misc.MiscCommands has been loaded.
+2019-07-19 18:21:25,996 :: INFO :: Extension src.module.anilist.AnimeCommands has been loaded.
+2019-07-19 18:21:25,999 :: INFO :: Extension src.module.administration.AdminCommands has been loaded.
+2019-07-19 18:21:47,970 :: INFO :: Logged in as Astro Bot
+2019-07-19 18:21:51,529 :: DEBUG :: [['https://66.media.tumblr.com/c03c5de2bcb81820c4e74811d1e96da7/tumblr_puvdea5QZK1txicv8o1_640.jpg', 'fate/grand order fate fgo', 'https://www.goodsmile.info/ja/product/8555']]
+2019-07-19 18:21:51,531 :: DEBUG :: [['https://66.media.tumblr.com/c03c5de2bcb81820c4e74811d1e96da7/tumblr_puvdea5QZK1txicv8o1_640.jpg', 'fate/grand order fate fgo', 'https://www.goodsmile.info/ja/product/8555'], ['https://66.media.tumblr.com/8b4bd95e82d2b4750a7d1b134360f5b2/tumblr_puvdbwADcb1txicv8o1_640.jpg', 'とある科学の一方通行 accelerator a certain scientific accelerator', 'https://www.goodsmile.info/ja/product/8556']]
+2019-07-19 18:21:51,532 :: DEBUG :: [['https://66.media.tumblr.com/c03c5de2bcb81820c4e74811d1e96da7/tumblr_puvdea5QZK1txicv8o1_640.jpg', 'fate/grand order fate fgo', 'https://www.goodsmile.info/ja/product/8555'], ['https://66.media.tumblr.com/8b4bd95e82d2b4750a7d1b134360f5b2/tumblr_puvdbwADcb1txicv8o1_640.jpg', 'とある科学の一方通行 accelerator a certain scientific accelerator', 'https://www.goodsmile.info/ja/product/8556'], ['https://66.media.tumblr.com/1611ee63376c9ef02c5be41e50dc4e8f/tumblr_puieitwoV81txicv8o1_1280.jpg', 'hatsune miku magical mirai 初音未來', 'http://www.goodsmile.info/ja/product/8513/']]
+2019-07-19 18:21:52,326 :: DEBUG :: fate/grand order fate fgo https://www.goodsmile.info/ja/product/8555
+2019-07-19 18:22:23,793 :: INFO :: Starting Astro Bot ...
+2019-07-19 18:22:23,832 :: INFO :: Extension src.module.events.Events has been loaded.
+2019-07-19 18:22:23,907 :: INFO :: Extension src.module.nendo.NendoCommands has been loaded.
+2019-07-19 18:22:23,916 :: INFO :: Extension src.module.misc.MiscCommands has been loaded.
+2019-07-19 18:22:24,043 :: INFO :: Extension src.module.anilist.AnimeCommands has been loaded.
+2019-07-19 18:22:24,048 :: INFO :: Extension src.module.administration.AdminCommands has been loaded.
+2019-07-19 18:22:27,027 :: INFO :: Logged in as Astro Bot
+2019-07-19 18:24:23,381 :: DEBUG :: [['https://66.media.tumblr.com/c03c5de2bcb81820c4e74811d1e96da7/tumblr_puvdea5QZK1txicv8o1_640.jpg', 'fate/grand order fate fgo', 'https://www.goodsmile.info/ja/product/8555']]
+2019-07-19 18:24:23,383 :: DEBUG :: [['https://66.media.tumblr.com/c03c5de2bcb81820c4e74811d1e96da7/tumblr_puvdea5QZK1txicv8o1_640.jpg', 'fate/grand order fate fgo', 'https://www.goodsmile.info/ja/product/8555'], ['https://66.media.tumblr.com/8b4bd95e82d2b4750a7d1b134360f5b2/tumblr_puvdbwADcb1txicv8o1_640.jpg', 'とある科学の一方通行 accelerator a certain scientific accelerator', 'https://www.goodsmile.info/ja/product/8556']]
+2019-07-19 18:24:23,384 :: DEBUG :: [['https://66.media.tumblr.com/c03c5de2bcb81820c4e74811d1e96da7/tumblr_puvdea5QZK1txicv8o1_640.jpg', 'fate/grand order fate fgo', 'https://www.goodsmile.info/ja/product/8555'], ['https://66.media.tumblr.com/8b4bd95e82d2b4750a7d1b134360f5b2/tumblr_puvdbwADcb1txicv8o1_640.jpg', 'とある科学の一方通行 accelerator a certain scientific accelerator', 'https://www.goodsmile.info/ja/product/8556'], ['https://66.media.tumblr.com/1611ee63376c9ef02c5be41e50dc4e8f/tumblr_puieitwoV81txicv8o1_1280.jpg', 'hatsune miku magical mirai 初音未來', 'http://www.goodsmile.info/ja/product/8513/']]
+2019-07-19 18:24:24,212 :: DEBUG :: fate/grand order fate fgo https://www.goodsmile.info/ja/product/8555
+2019-07-19 18:24:27,891 :: DEBUG :: とある科学の一方通行 accelerator a certain scientific accelerator https://www.goodsmile.info/ja/product/8556
+2019-07-19 18:24:32,056 :: DEBUG :: hatsune miku magical mirai 初音未來 http://www.goodsmile.info/ja/product/8513/

@@ -102,7 +102,7 @@ class AdminCommands(commands.Cog):
                 role = self.bot.get_guild(celestis_guild_id).get_role(admWeabRoleId)
             elif payload.emoji.name == self.config.admOwbEmoji:
                 role = self.bot.get_guild(celestis_guild_id).get_role(admOwRoleId)
-            elif payload.emoji.name == self.config.admYugiohEmoji
+            elif payload.emoji.name == self.config.admYugiohEmoji:
                 role = self.bot.get_guild(celestis_guild_id).get_role(admYugiohRoleId)
             elif payload.emoji.name == self.config.admTabletopEmoji:
                 role = self.bot.get_guild(celestis_guild_id).get_role(admTabletopRoleId)

@@ -11,7 +11,7 @@ client = pytumblr.TumblrRestClient(
     token_secret
 )
 
-db = 'nendo/nendo.db'
+db = 'src/module/nendo/nendo.db'
 logger = logging.getLogger('AstroLog')
 
 def run():
@@ -22,7 +22,6 @@ def run():
     for post in feed['posts']:
         #Get tag
         tag = post['tags']
-        print('coucou')
         if ('nendoroid' in tag): #treatment
             #Get name of the Fig
             tab = ' '.join(tag)
