@@ -25,7 +25,6 @@ class MiscCommands(commands.Cog):
 
     @commands.command()
     async def hello(self, ctx):
-        self.logger.debug("coucou")
         await ctx.send("Bip Boop (Hello World !)")
 
 ##TO DO
@@ -44,7 +43,6 @@ class MiscCommands(commands.Cog):
     @commands.command()
     async def addTheme(self, ctx, word):
         word = word.split(',')
-        self.logger.debug(word)
         with open('misc/theme.db', 'a') as f:
             for i in word:
                 f.write(i + '\n')
