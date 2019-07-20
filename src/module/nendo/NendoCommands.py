@@ -20,11 +20,10 @@ class NendoCommands(commands.Cog):
             tmp = nendo[1] + ' ' + nendo[2]
             img_data = requests.get(url).content
             with open('src/module/nendo/cache.jpg', 'wb') as handler:
-                handler.write(img_data)
-            with open('src/module/nendo/cache.jpg', 'rb') as f:
-                self.logger.debug(tmp)
-                ch = self.bot.get_channel(571792395428036608)
-                await ch.send(tmp, file=discord.File('src/module/nendo/cache.jpg'))
+                f.write(img_data)
+            self.logger.debug(tmp)
+            ch = self.bot.get_channel(571792395428036608)
+            await ch.send(tmp, file=discord.File('src/module/nendo/cache.jpg'))
 
 def setup(bot):
     bot.add_cog(NendoCommands(bot))

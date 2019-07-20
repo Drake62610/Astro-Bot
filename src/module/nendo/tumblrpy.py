@@ -16,7 +16,6 @@ logger = logging.getLogger('AstroLog')
 
 def run():
     feed = client.posts('good-smile-company', limit=10)
-    #print(feed['posts'])
     announce = []
 
     for post in feed['posts']:
@@ -36,7 +35,6 @@ def run():
                     break
                 #Now we send it to image
                 announce.append([url,name,link])
-                logger.debug(announce)
     updatedb(announce)
     return announce
 
@@ -47,7 +45,7 @@ def isindb(name):
             if name in line:
                 data.close
                 return True
-    data.close
+        data.close
     return False
 
 def updatedb(list):
