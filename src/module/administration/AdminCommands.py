@@ -1,14 +1,15 @@
 import discord
+import logging
+import os
 from discord.ext import commands
 from src.utils import default
-import logging
 
 class AdminCommands(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
         self.logger = logging.getLogger('AstroLog')
-        self.config = default.get("config.json")
+        self.config = default.get(os.path.dirname(os.path.abspath(__file__)) + "/../../../config.json")
 
     # Server information commands
     # Inspired from https://github.com/AlexFlipnote/discord_bot.py/blob/master/cogs/discord.py
