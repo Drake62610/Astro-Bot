@@ -24,15 +24,7 @@ class MiscCommands(commands.Cog):
         await ctx.send(tmp)
 
     @commands.command()
-    async def joined_at(self,ctx, member: discord.Member = None):
-        if member is None:
-            member = ctx.message.author
-
-        await ctx.send('{0} joined at {0.joined_at}'.format(member))
-
-    @commands.command()
     async def hello(self, ctx):
-        self.logger.debug("coucou")
         await ctx.send("Bip Boop (Hello World !)")
 
 ##TO DO
@@ -51,7 +43,6 @@ class MiscCommands(commands.Cog):
     @commands.command()
     async def addTheme(self, ctx, word):
         word = word.split(',')
-        self.logger.debug(word)
         with open('misc/theme.db', 'a') as f:
             for i in word:
                 f.write(i + '\n')
