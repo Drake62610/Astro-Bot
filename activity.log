@@ -4,3 +4,148 @@
 2019-07-20 08:51:32,916 :: INFO :: Extension src.module.misc.MiscCommands has been loaded.
 2019-07-20 08:51:33,045 :: INFO :: Extension src.module.anilist.AnimeCommands has been loaded.
 2019-07-20 08:51:33,050 :: INFO :: Extension src.module.administration.AdminCommands has been loaded.
+2020-06-02 22:55:38,683 :: INFO :: Starting Astro Bot ...
+2020-06-02 22:55:38,826 :: WARNING :: Failed to load extension src.module.events.Events
+AttributeError: module 'discord.ext.commands' has no attribute 'Cog'
+2020-06-02 22:55:38,952 :: WARNING :: Failed to load extension src.module.nendo.NendoCommands
+AttributeError: module 'discord.ext.commands' has no attribute 'Cog'
+2020-06-02 22:55:39,023 :: WARNING :: Failed to load extension src.module.misc.MiscCommands
+AttributeError: module 'discord.ext.commands' has no attribute 'Cog'
+2020-06-02 22:55:39,085 :: WARNING :: Failed to load extension src.module.anilist.AnimeCommands
+AttributeError: module 'discord.ext.commands' has no attribute 'Cog'
+2020-06-02 22:55:39,091 :: WARNING :: Failed to load extension src.module.administration.AdminCommands
+SyntaxError: invalid syntax (AdminCommands.py, line 24)
+2020-06-02 23:06:47,781 :: INFO :: Starting Astro Bot ...
+2020-06-02 23:06:47,800 :: WARNING :: Failed to load extension src.module.events.Events
+ExtensionFailed: Extension 'src.module.events.Events' raised an error: ModuleNotFoundError: No module named 'recastai'
+2020-06-02 23:06:47,851 :: WARNING :: Failed to load extension src.module.nendo.NendoCommands
+ExtensionFailed: Extension 'src.module.nendo.NendoCommands' raised an error: ModuleNotFoundError: No module named 'pytumblr'
+2020-06-02 23:06:48,712 :: INFO :: Extension src.module.misc.MiscCommands has been loaded.
+2020-06-02 23:06:49,097 :: INFO :: Extension src.module.anilist.AnimeCommands has been loaded.
+2020-06-02 23:06:49,138 :: INFO :: Extension src.module.administration.AdminCommands has been loaded.
+2020-06-02 23:08:04,343 :: INFO :: Starting Astro Bot ...
+2020-06-02 23:08:04,348 :: WARNING :: Failed to load extension src.module.events.Events
+ExtensionFailed: Extension 'src.module.events.Events' raised an error: ModuleNotFoundError: No module named 'recastai'
+2020-06-02 23:08:04,356 :: WARNING :: Failed to load extension src.module.nendo.NendoCommands
+ExtensionFailed: Extension 'src.module.nendo.NendoCommands' raised an error: ModuleNotFoundError: No module named 'pytumblr'
+2020-06-02 23:08:04,472 :: INFO :: Extension src.module.misc.MiscCommands has been loaded.
+2020-06-02 23:08:04,608 :: INFO :: Extension src.module.anilist.AnimeCommands has been loaded.
+2020-06-02 23:08:04,618 :: INFO :: Extension src.module.administration.AdminCommands has been loaded.
+2020-06-02 23:08:23,900 :: INFO :: Starting Astro Bot ...
+2020-06-02 23:08:23,906 :: WARNING :: Failed to load extension src.module.events.Events
+ExtensionFailed: Extension 'src.module.events.Events' raised an error: ModuleNotFoundError: No module named 'recastai'
+2020-06-02 23:08:23,911 :: WARNING :: Failed to load extension src.module.nendo.NendoCommands
+ExtensionFailed: Extension 'src.module.nendo.NendoCommands' raised an error: ModuleNotFoundError: No module named 'pytumblr'
+2020-06-02 23:08:24,033 :: INFO :: Extension src.module.misc.MiscCommands has been loaded.
+2020-06-02 23:08:24,154 :: INFO :: Extension src.module.anilist.AnimeCommands has been loaded.
+2020-06-02 23:08:24,161 :: INFO :: Extension src.module.administration.AdminCommands has been loaded.
+2020-06-02 23:09:21,141 :: INFO :: Starting Astro Bot ...
+2020-06-02 23:09:21,147 :: WARNING :: Failed to load extension src.module.events.Events
+ExtensionFailed: Extension 'src.module.events.Events' raised an error: ModuleNotFoundError: No module named 'recastai'
+2020-06-02 23:09:21,151 :: WARNING :: Failed to load extension src.module.nendo.NendoCommands
+ExtensionFailed: Extension 'src.module.nendo.NendoCommands' raised an error: ModuleNotFoundError: No module named 'pytumblr'
+2020-06-02 23:09:21,255 :: INFO :: Extension src.module.misc.MiscCommands has been loaded.
+2020-06-02 23:09:21,359 :: INFO :: Extension src.module.anilist.AnimeCommands has been loaded.
+2020-06-02 23:09:21,366 :: INFO :: Extension src.module.administration.AdminCommands has been loaded.
+2020-06-02 23:09:24,280 :: INFO :: Logged in as Astro Bot
+2020-06-02 23:18:36,770 :: INFO :: Starting Astro Bot ...
+2020-06-02 23:18:36,775 :: WARNING :: Failed to load extension src.module.events.Events
+ExtensionFailed: Extension 'src.module.events.Events' raised an error: ModuleNotFoundError: No module named 'recastai'
+2020-06-02 23:18:36,781 :: WARNING :: Failed to load extension src.module.nendo.NendoCommands
+ExtensionFailed: Extension 'src.module.nendo.NendoCommands' raised an error: ModuleNotFoundError: No module named 'pytumblr'
+2020-06-02 23:18:36,911 :: INFO :: Extension src.module.misc.MiscCommands has been loaded.
+2020-06-02 23:18:37,039 :: INFO :: Extension src.module.anilist.AnimeCommands has been loaded.
+2020-06-02 23:18:37,078 :: INFO :: Extension src.module.administration.AdminCommands has been loaded.
+2020-06-02 23:18:40,583 :: INFO :: Logged in as Astro Bot
+2020-06-02 23:21:17,780 :: INFO :: Starting Astro Bot ...
+2020-06-02 23:21:17,788 :: WARNING :: Failed to load extension src.module.events.Events
+ExtensionFailed: Extension 'src.module.events.Events' raised an error: ModuleNotFoundError: No module named 'recastai'
+2020-06-02 23:21:17,804 :: WARNING :: Failed to load extension src.module.nendo.NendoCommands
+ExtensionFailed: Extension 'src.module.nendo.NendoCommands' raised an error: ModuleNotFoundError: No module named 'pytumblr'
+2020-06-02 23:21:17,972 :: INFO :: Extension src.module.misc.MiscCommands has been loaded.
+2020-06-02 23:21:18,159 :: INFO :: Extension src.module.anilist.AnimeCommands has been loaded.
+2020-06-02 23:21:18,218 :: INFO :: Extension src.module.administration.AdminCommands has been loaded.
+2020-06-02 23:21:21,519 :: INFO :: Logged in as Astro Bot
+2020-06-02 23:22:34,351 :: INFO :: Starting Astro Bot ...
+2020-06-02 23:22:34,368 :: WARNING :: Failed to load extension src.module.events.Events
+ExtensionFailed: Extension 'src.module.events.Events' raised an error: ModuleNotFoundError: No module named 'recastai'
+2020-06-02 23:22:34,384 :: WARNING :: Failed to load extension src.module.nendo.NendoCommands
+ExtensionFailed: Extension 'src.module.nendo.NendoCommands' raised an error: ModuleNotFoundError: No module named 'pytumblr'
+2020-06-02 23:22:34,713 :: INFO :: Extension src.module.misc.MiscCommands has been loaded.
+2020-06-02 23:22:34,953 :: INFO :: Extension src.module.anilist.AnimeCommands has been loaded.
+2020-06-02 23:22:35,008 :: INFO :: Extension src.module.administration.AdminCommands has been loaded.
+2020-06-02 23:22:38,422 :: INFO :: Logged in as Astro Bot
+2020-06-03 21:02:44,223 :: INFO :: Starting Astro Bot ...
+2020-06-03 21:02:44,238 :: WARNING :: Failed to load extension src.module.events.Events
+ExtensionFailed: Extension 'src.module.events.Events' raised an error: ModuleNotFoundError: No module named 'recastai'
+2020-06-03 21:02:44,266 :: WARNING :: Failed to load extension src.module.nendo.NendoCommands
+ExtensionFailed: Extension 'src.module.nendo.NendoCommands' raised an error: ModuleNotFoundError: No module named 'pytumblr'
+2020-06-03 21:02:45,075 :: INFO :: Extension src.module.misc.MiscCommands has been loaded.
+2020-06-03 21:02:45,397 :: INFO :: Extension src.module.anilist.AnimeCommands has been loaded.
+2020-06-03 21:02:45,434 :: INFO :: Extension src.module.administration.AdminCommands has been loaded.
+2020-06-03 21:02:49,201 :: INFO :: Logged in as Astro Bot
+2020-06-04 20:24:12,143 :: INFO :: Logged in as Astro Bot
+2020-06-05 00:08:10,900 :: INFO :: Starting Astro Bot ...
+2020-06-05 00:08:10,921 :: WARNING :: Failed to load extension src.module.events.Events
+ExtensionFailed: Extension 'src.module.events.Events' raised an error: ModuleNotFoundError: No module named 'recastai'
+2020-06-05 00:08:10,945 :: WARNING :: Failed to load extension src.module.nendo.NendoCommands
+ExtensionFailed: Extension 'src.module.nendo.NendoCommands' raised an error: ModuleNotFoundError: No module named 'pytumblr'
+2020-06-05 00:08:11,720 :: INFO :: Extension src.module.misc.MiscCommands has been loaded.
+2020-06-05 00:08:12,015 :: INFO :: Extension src.module.anilist.AnimeCommands has been loaded.
+2020-06-05 00:08:12,060 :: WARNING :: Failed to load extension src.module.administration.AdminCommands
+ExtensionFailed: Extension 'src.module.administration.AdminCommands' raised an error: ModuleNotFoundError: No module named 'constant'
+2020-06-05 00:08:18,630 :: INFO :: Logged in as Astro Bot
+2020-06-05 00:13:09,530 :: INFO :: Starting Astro Bot ...
+2020-06-05 00:13:09,538 :: WARNING :: Failed to load extension src.module.events.Events
+ExtensionFailed: Extension 'src.module.events.Events' raised an error: ModuleNotFoundError: No module named 'recastai'
+2020-06-05 00:13:09,544 :: WARNING :: Failed to load extension src.module.nendo.NendoCommands
+ExtensionFailed: Extension 'src.module.nendo.NendoCommands' raised an error: ModuleNotFoundError: No module named 'pytumblr'
+2020-06-05 00:13:09,668 :: INFO :: Extension src.module.misc.MiscCommands has been loaded.
+2020-06-05 00:13:09,828 :: INFO :: Extension src.module.anilist.AnimeCommands has been loaded.
+2020-06-05 00:13:09,899 :: INFO :: Extension src.module.administration.AdminCommands has been loaded.
+2020-06-05 00:13:16,379 :: INFO :: Logged in as Astro Bot
+2020-06-05 00:14:31,336 :: INFO :: Starting Astro Bot ...
+2020-06-05 00:14:31,343 :: WARNING :: Failed to load extension src.module.events.Events
+ExtensionFailed: Extension 'src.module.events.Events' raised an error: ModuleNotFoundError: No module named 'recastai'
+2020-06-05 00:14:31,348 :: WARNING :: Failed to load extension src.module.nendo.NendoCommands
+ExtensionFailed: Extension 'src.module.nendo.NendoCommands' raised an error: ModuleNotFoundError: No module named 'pytumblr'
+2020-06-05 00:14:31,462 :: INFO :: Extension src.module.misc.MiscCommands has been loaded.
+2020-06-05 00:14:31,581 :: INFO :: Extension src.module.anilist.AnimeCommands has been loaded.
+2020-06-05 00:14:31,589 :: INFO :: Extension src.module.administration.AdminCommands has been loaded.
+2020-06-05 00:14:37,756 :: INFO :: Logged in as Astro Bot
+2020-06-05 00:59:27,872 :: INFO :: Starting Astro Bot ...
+2020-06-05 00:59:27,883 :: WARNING :: Failed to load extension src.module.events.Events
+ExtensionFailed: Extension 'src.module.events.Events' raised an error: ModuleNotFoundError: No module named 'recastai'
+2020-06-05 00:59:27,889 :: WARNING :: Failed to load extension src.module.nendo.NendoCommands
+ExtensionFailed: Extension 'src.module.nendo.NendoCommands' raised an error: ModuleNotFoundError: No module named 'pytumblr'
+2020-06-05 00:59:28,046 :: INFO :: Extension src.module.misc.MiscCommands has been loaded.
+2020-06-05 00:59:28,228 :: INFO :: Extension src.module.anilist.AnimeCommands has been loaded.
+2020-06-05 00:59:28,289 :: INFO :: Extension src.module.administration.AdminCommands has been loaded.
+2020-06-05 00:59:31,731 :: INFO :: Logged in as Astro Bot
+2020-06-05 01:01:21,324 :: INFO :: Starting Astro Bot ...
+2020-06-05 01:01:21,329 :: WARNING :: Failed to load extension src.module.events.Events
+ExtensionFailed: Extension 'src.module.events.Events' raised an error: ModuleNotFoundError: No module named 'recastai'
+2020-06-05 01:01:21,336 :: WARNING :: Failed to load extension src.module.nendo.NendoCommands
+ExtensionFailed: Extension 'src.module.nendo.NendoCommands' raised an error: ModuleNotFoundError: No module named 'pytumblr'
+2020-06-05 01:01:21,496 :: INFO :: Extension src.module.misc.MiscCommands has been loaded.
+2020-06-05 01:01:21,667 :: INFO :: Extension src.module.anilist.AnimeCommands has been loaded.
+2020-06-05 01:01:21,723 :: INFO :: Extension src.module.administration.AdminCommands has been loaded.
+2020-06-05 01:01:24,823 :: INFO :: Logged in as Astro Bot
+2020-06-05 01:03:20,448 :: INFO :: Starting Astro Bot ...
+2020-06-05 01:03:20,454 :: WARNING :: Failed to load extension src.module.events.Events
+ExtensionFailed: Extension 'src.module.events.Events' raised an error: ModuleNotFoundError: No module named 'recastai'
+2020-06-05 01:03:20,471 :: WARNING :: Failed to load extension src.module.nendo.NendoCommands
+ExtensionFailed: Extension 'src.module.nendo.NendoCommands' raised an error: ModuleNotFoundError: No module named 'pytumblr'
+2020-06-05 01:03:20,654 :: INFO :: Extension src.module.misc.MiscCommands has been loaded.
+2020-06-05 01:03:20,905 :: INFO :: Extension src.module.anilist.AnimeCommands has been loaded.
+2020-06-05 01:03:20,969 :: INFO :: Extension src.module.administration.AdminCommands has been loaded.
+2020-06-05 01:03:24,307 :: INFO :: Logged in as Astro Bot
+2020-06-05 01:11:02,938 :: INFO :: Starting Astro Bot ...
+2020-06-05 01:11:02,945 :: WARNING :: Failed to load extension src.module.events.Events
+ExtensionFailed: Extension 'src.module.events.Events' raised an error: ModuleNotFoundError: No module named 'recastai'
+2020-06-05 01:11:02,958 :: WARNING :: Failed to load extension src.module.nendo.NendoCommands
+ExtensionFailed: Extension 'src.module.nendo.NendoCommands' raised an error: ModuleNotFoundError: No module named 'pytumblr'
+2020-06-05 01:11:03,110 :: INFO :: Extension src.module.misc.MiscCommands has been loaded.
+2020-06-05 01:11:03,263 :: INFO :: Extension src.module.anilist.AnimeCommands has been loaded.
+2020-06-05 01:11:03,307 :: INFO :: Extension src.module.administration.AdminCommands has been loaded.
+2020-06-05 01:11:06,313 :: INFO :: Logged in as Astro Bot

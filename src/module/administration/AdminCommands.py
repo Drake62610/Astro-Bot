@@ -1,6 +1,7 @@
 import discord
 import logging
 import os
+from . import config
 from discord.ext import commands
 from src.utils import default
 
@@ -9,7 +10,6 @@ class AdminCommands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.logger = logging.getLogger('AstroLog')
-        self.config = default.get(os.path.dirname(os.path.abspath(__file__)) + "/../../../config.json")
 
     # Server information commands
     # Inspired from https://github.com/AlexFlipnote/discord_bot.py/blob/master/cogs/discord.py
@@ -66,12 +66,13 @@ class AdminCommands(commands.Cog):
 
 
     # Server vital commands
+    # ---------------------
     @commands.Cog.listener()
     async def on_member_join(self, member:discord.Member):
         """Send a private message to the joiner in order to inform him what to do"""
         join_message = "Bienvenue sur le server de Celestis !\n\
                         Afin de pouvoir avoir accès au reste du serveur tu dois lire le règlement qui se situe dans ```#accueil```!\n\
-                        Quand c'est fait nous te demandons de remplir la condition indiquée à la fin du post et je te donnerai le rôle d'invité.\n\
+                        Quand c'est fait nous te demandons de remplir la condition indiquée à la fin du post et obtiendra le rôle d'invité.\n\
                         \n\
                         Bonne lecture !"
         await member.send(join_message)
@@ -79,73 +80,59 @@ class AdminCommands(commands.Cog):
     # Give roles commands
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
-        celestis_guild_id = 161079565832159232
         # Accept reglement detection, watch rules message
-        if payload.message_id == 178672774263341067:
-            arrivant_role_id = 183244699329363972
-            print(payload.emoji.name)
-            if payload.emoji.name == '🆗':
-                role = self.bot.get_guild(celestis_guild_id).get_role(arrivant_role_id)
-                await self.bot.get_guild(celestis_guild_id).get_member(payload.user_id).add_roles(role)
+        if payload.message_id == config.RULES_MESSAGE_ID:
+            
+            if payload.emoji.name == config.OK_EMOJI:
+                role = self.bot.get_guild(config.CELESTIS_GUILD_ID).get_role(config.INVITED_ROLE_ID)
+                await self.bot.get_guild(config.CELESTIS_GUILD_ID).get_member(payload.user_id).add_roles(role)
 
         # Role reaction detection, watch #rules channel
-        if payload.channel_id == 571774099911606284:
+        if payload.message_id == config.ROLE_MESSAGE_ID:
+            print(payload.emoji.name)
             # Each case represent a role to give compare emoji "name"            
-            admWeabRoleId = self.config.admWeabRoleId
-            admOwRoleId = self.config.admOwRoleId
-            admYugiohRoleId = self.config.admYugiohRoleId
-            admTabletopRoleId = self.config.admTabletopRoleId
-            admMinecraftRoleId = self.config.admMinecraftRoleId
-            admCarteRoleId = self.config.admCarteRoleId
-            admJdrRoleId = self.config.admJdrRoleId
-
-            if payload.emoji.name == self.config.admWeabEmoji:
-                role = self.bot.get_guild(celestis_guild_id).get_role(admWeabRoleId)
-            elif payload.emoji.name == self.config.admOwbEmoji:
-                role = self.bot.get_guild(celestis_guild_id).get_role(admOwRoleId)
-            elif payload.emoji.name == self.config.admYugiohEmoji:
-                role = self.bot.get_guild(celestis_guild_id).get_role(admYugiohRoleId)
-            elif payload.emoji.name == self.config.admTabletopEmoji:
-                role = self.bot.get_guild(celestis_guild_id).get_role(admTabletopRoleId)
-            elif payload.emoji.name == self.config.admMinecraftEmoji:
-                role = self.bot.get_guild(celestis_guild_id).get_role(admMinecraftRoleId)
-            elif payload.emoji.name == self.config.admCarteEmoji:
-                role = self.bot.get_guild(celestis_guild_id).get_role(admCarteRoleId)
-            elif payload.emoji.name == self.config.admJdrEmoji:
-                role = self.bot.get_guild(celestis_guild_id).get_role(admJdrRoleId)
+            if payload.emoji.name == config.WEAB_EMOJI:
+                role = self.bot.get_guild(config.CELESTIS_GUILD_ID).get_role(config.WEAB_ROLE_ID)
+            elif payload.emoji.name == config.TABLETOP_EMOJI:
+                role = self.bot.get_guild(config.CELESTIS_GUILD_ID).get_role(config.TABLETOP_ROLE_ID)
+            elif payload.emoji.name == config.MINECRAFT_EMOJI:
+                role = self.bot.get_guild(config.CELESTIS_GUILD_ID).get_role(config.MINECRAFT_ROLE_ID)
+            elif payload.emoji.name == config.CARTE_EMOJI:
+                role = self.bot.get_guild(config.CELESTIS_GUILD_ID).get_role(config.CARTE_ROLE_ID)
+            elif payload.emoji.name == config.JDR_EMOJI:
+                role = self.bot.get_guild(config.CELESTIS_GUILD_ID).get_role(config.JDR_ROLE_ID)
+            elif payload.emoji.name == config.GAMER_EMOJI:
+                role = self.bot.get_guild(config.CELESTIS_GUILD_ID).get_role(config.GAMER_ROLE_ID)
 
             # Missing case where a bad emoji is inputed
-            await self.bot.get_guild(celestis_guild_id).get_member(payload.user_id).add_roles(role)
+            await self.bot.get_guild(config.CELESTIS_GUILD_ID).get_member(payload.user_id).add_roles(role)
 
     @commands.Cog.listener()
     async def on_raw_reaction_remove(self, payload):
-        # Role reaction detection
-        if payload.channel_id == 571774099911606284:
-            # Each case represent a role to give compare emoji "name"
-            celestis_guild_id = 161079565832159232
-            weab_role_id = 571783195973124113
-            ow_role_id = 571783638757408783
-            yugioh_role_id = 571784801431060492
-            tabletop_role_id = 571783820722962452
-            minecraft_role_id = 571783779517988904
-            carte_role_id = 571783602157649922
-            jdr_role_id = 571783692754878507
-            if payload.emoji.name == '🇯🇵':
-                role = self.bot.get_guild(celestis_guild_id).get_role(weab_role_id)
-            elif payload.emoji.name == 'OW':
-                role = self.bot.get_guild(celestis_guild_id).get_role(ow_role_id)
-            elif payload.emoji.name == 'kuribo':
-                role = self.bot.get_guild(celestis_guild_id).get_role(yugioh_role_id)
-            elif payload.emoji.name == 'tabouret':
-                role = self.bot.get_guild(celestis_guild_id).get_role(tabletop_role_id)
-            elif payload.emoji.name == 'dark':
-                role = self.bot.get_guild(celestis_guild_id).get_role(minecraft_role_id)
-            elif payload.emoji.name == '🗺':
-                role = self.bot.get_guild(celestis_guild_id).get_role(carte_role_id)
-            elif payload.emoji.name == '🎲':
-                role = self.bot.get_guild(celestis_guild_id).get_role(jdr_role_id)
 
-            await self.bot.get_guild(celestis_guild_id).get_member(payload.user_id).remove_roles(role)
+        # Remove reglement accept, watch rules message
+        if payload.message_id == config.RULES_MESSAGE_ID:
+            if payload.emoji.name == config.OK_EMOJI:
+                role = self.bot.get_guild(config.CELESTIS_GUILD_ID).get_role(config.INVITED_ROLE_ID)
+                await self.bot.get_guild(config.CELESTIS_GUILD_ID).get_member(payload.user_id).remove_roles(role)
+
+        # Role reaction detection
+        if payload.message_id == config.ROLE_MESSAGE_ID:
+            # Each case represent a role to give compare emoji "name"
+            if payload.emoji.name == config.WEAB_EMOJI:
+                role = self.bot.get_guild(config.CELESTIS_GUILD_ID).get_role(config.WEAB_ROLE_ID)
+            elif payload.emoji.name == config.TABLETOP_EMOJI:
+                role = self.bot.get_guild(config.CELESTIS_GUILD_ID).get_role(config.TABLETOP_ROLE_ID)
+            elif payload.emoji.name == config.MINECRAFT_EMOJI:
+                role = self.bot.get_guild(config.CELESTIS_GUILD_ID).get_role(config.MINECRAFT_ROLE_ID)
+            elif payload.emoji.name == config.CARTE_EMOJI:
+                role = self.bot.get_guild(config.CELESTIS_GUILD_ID).get_role(config.CARTE_ROLE_ID)
+            elif payload.emoji.name == config.JDR_EMOJI:
+                role = self.bot.get_guild(config.CELESTIS_GUILD_ID).get_role(config.JDR_ROLE_ID)
+            elif payload.emoji.name == config.GAMER_EMOJI:
+                role = self.bot.get_guild(config.CELESTIS_GUILD_ID).get_role(config.GAMER_ROLE_ID)
+
+            await self.bot.get_guild(config.CELESTIS_GUILD_ID).get_member(payload.user_id).remove_roles(role)
 
 def setup(bot):
     bot.add_cog(AdminCommands(bot))
