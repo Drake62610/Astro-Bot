@@ -89,7 +89,7 @@ class AdminCommands(commands.Cog):
 
         # Role reaction detection, watch #rules channel
         if payload.message_id == config.ROLE_MESSAGE_ID:
-            print(payload.emoji.name)
+            role = ''
             # Each case represent a role to give compare emoji "name"            
             if payload.emoji.name == config.WEAB_EMOJI:
                 role = self.bot.get_guild(config.CELESTIS_GUILD_ID).get_role(config.WEAB_ROLE_ID)
@@ -104,8 +104,9 @@ class AdminCommands(commands.Cog):
             elif payload.emoji.name == config.GAMER_EMOJI:
                 role = self.bot.get_guild(config.CELESTIS_GUILD_ID).get_role(config.GAMER_ROLE_ID)
 
-            # Missing case where a bad emoji is inputed
-            await self.bot.get_guild(config.CELESTIS_GUILD_ID).get_member(payload.user_id).add_roles(role)
+            if role != '':
+                # Missing case where a bad emoji is inputed
+                await self.bot.get_guild(config.CELESTIS_GUILD_ID).get_member(payload.user_id).add_roles(role)
 
     @commands.Cog.listener()
     async def on_raw_reaction_remove(self, payload):
