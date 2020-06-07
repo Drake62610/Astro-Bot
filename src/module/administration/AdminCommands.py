@@ -77,6 +77,10 @@ class AdminCommands(commands.Cog):
                         Bonne lecture !"
         await member.send(join_message)
 
+        # Give Arrival role
+        role = self.bot.get_guild(config.CELESTIS_GUILD_ID).get_role(config.ARRIVAL_ROLE_ID)
+        await self.bot.get_guild(config.CELESTIS_GUILD_ID).get_member(payload.user_id).add_roles(role)
+
     # Give roles commands
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
