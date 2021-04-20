@@ -15,7 +15,7 @@ more-itertools==7.0.0
 multidict==4.5.2
 oauthlib==3.0.1
 pluggy==0.9.0
-py==1.8.0
+py==1.10.0
 pytest==4.4.1
 pytest-cov==2.6.1
 PyTumblr==0.0.8
